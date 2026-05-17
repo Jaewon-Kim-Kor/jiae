@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>태사비애 · 지애 Song Requests</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f8fc;
+            --white: #ffffff;
+            --ink: #1e1e2e;
+            --sub: #8080a0;
+            --line: #e8e8f0;
+            --line2: #f0f0f8;
+            --accent: #7c6af7;
+            --accent2: #f06292;
+            --tag-bg: #f0effe;
+            --tag-border: #e0dbfb;
+            --tag-hover: #7c6af7;
+            --highlight: #ffe066;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; overflow: hidden; }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ─── HEADER (컴팩트) ─── */
+        header {
+            background: linear-gradient(135deg, #a78bfa 0%, #f472b6 60%, #fb923c 100%);
+            padding: 18px 24px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        header::after {
+            content: '♪';
+            position: absolute;
+            font-size: 90px;
+            color: rgba(255,255,255,0.08);
+            right: 18px; top: 50%;
+            transform: translateY(-50%);
+            line-height: 1;
+            pointer-events: none;
+        }
+        .h-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            line-height: 1;
+        }
+        .h-title span {
+            font-style: italic;
+            color: rgba(255,255,255,0.75);
+            font-weight: 400;
+            font-size: 0.8em;
+            margin: 0 2px;
+        }
+        .h-sub {
+            font-size: 10.5px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            color: rgba(255,255,255,0.85);
+            text-transform: uppercase;
+            padding-left: 14px;
+            border-left: 1px solid rgba(255,255,255,0.35);
+            line-height: 1.3;
+        }
+
+        /* ─── 컨트롤 바: 검색 + 네비 통합 ─── */
+        .control-bar {
+            background: var(--white);
+            border-bottom: 1px solid var(--line);
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 1px 8px rgba(124,106,247,0.06);
+            flex-shrink: 0;
+            z-index: 10;
+        }
+        .nav-group {
+            display: flex;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+        .nav-group a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            color: #9090b0;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        .nav-group a:hover {
+            color: var(--accent);
+            background: var(--tag-bg);
+        }
+        .nav-group a.active {
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 420px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 7px 32px 7px 14px;
+            background: var(--bg);
+            border: 1.5px solid var(--line);
+            border-radius: 18px;
+            color: var(--ink);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12.5px;
+            outline: none;
+            transition: all 0.15s;
+        }
+        .search-box input::placeholder { color: #b0b0c8; }
+        .search-box input:focus {
+            border-color: var(--accent);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(124,106,247,0.1);
+        }
+        .search-icon {
+            position: absolute;
+            right: 12px; top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent);
+            font-size: 13px;
+            pointer-events: none;
+        }
+        #search-count {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            white-space: nowrap;
+            min-width: 0;
+        }
+
+        /* ─── MAIN (스크롤 영역) ─── */
+        .scroll-area {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            min-height: 0;
+        }
+        .main-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 18px 24px 24px;
+        }
+
+        /* ─── SECTION ─── */
+        .section {
+            margin-bottom: 24px;
+            scroll-margin-top: 60px;
+        }
+        .section.section-hidden { display: none; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1.5px solid var(--line);
+        }
+        .section-badge {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            padding: 2px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+        .section-title em { font-style: italic; color: var(--accent); }
+        .section-count {
+            margin-left: auto;
+            font-size: 11px;
+            color: var(--sub);
+            font-weight: 500;
+        }
+
+        /* ─── ROWS (컴팩트) ─── */
+        .artist-list {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .artist-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            border-bottom: 1px solid var(--line2);
+            transition: background 0.12s;
+        }
+        .artist-row:last-child { border-bottom: none; }
+        .artist-row:hover { background: #faf9ff; }
+        .artist-row.hidden { display: none; }
+
+        .highlight {
+            background: var(--highlight);
+            color: var(--ink);
+            border-radius: 2px;
+            padding: 0 1px;
+        }
+
+        .artist-name {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ink);
+            padding: 8px 12px 8px 14px;
+            border-right: 1px solid var(--line2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.35;
+            word-break: keep-all;
+            background: #fafaff;
+        }
+        .artist-name small {
+            font-size: 10px;
+            font-weight: 400;
+            color: #a0a0c0;
+            margin-top: 1px;
+        }
+
+        .artist-songs {
+            padding: 7px 14px 7px 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            align-items: center;
+            align-content: center;
+        }
+        .song-tag {
+            font-size: 11.5px;
+            font-weight: 400;
+            color: #5a4e8a;
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            border-radius: 4px;
+            padding: 2px 9px;
+            line-height: 1.55;
+            transition: all 0.12s;
+            cursor: default;
+        }
+        .song-tag:hover {
+            background: var(--tag-hover);
+            color: #fff;
+            border-color: var(--tag-hover);
+        }
+
+        /* ─── NO RESULT ─── */
+        #no-result {
+            display: none;
+            text-align: center;
+            padding: 48px 0;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 15px;
+            color: #c0c0d8;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: var(--white);
+            border-top: 1px solid var(--line);
+            font-size: 11px;
+            color: #c0c0d8;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+        footer strong {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 600px) {
+            header { padding: 14px 16px; gap: 10px; }
+            .h-title { font-size: 18px; }
+            .h-sub { font-size: 9px; letter-spacing: 1.5px; padding-left: 10px; }
+            .control-bar { padding: 8px 12px; gap: 8px; flex-wrap: wrap; }
+            .nav-group { width: 100%; order: 2; justify-content: center; }
+            .search-box { max-width: 100%; order: 1; }
+            .main-inner { padding: 14px 12px 16px; }
+            .artist-row { grid-template-columns: 95px 1fr; }
+            .artist-name { font-size: 11px; padding: 7px 8px; }
+            .artist-name small { font-size: 9px; }
+            .song-tag { font-size: 11px; padding: 2px 7px; }
+            .section-title { font-size: 16px; }
+            .section-count { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="h-title">태사비애 <span>&amp;</span> 지애</div>
+    <div class="h-sub">Song Requests<br>한국 · 팝</div>
+</header>
+
+<div class="control-bar">
+    <div class="nav-group" id="main-nav">
+        <a href="javascript:void(0)" data-target="korean" class="active">한국</a>
+        <a href="javascript:void(0)" data-target="pop">팝</a>
+    </div>
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="가수 또는 곡 검색..." autocomplete="off">
+        <span class="search-icon">🔍</span>
+    </div>
+    <div id="search-count"></div>
+</div>
+
+<main class="scroll-area">
+    <div class="main-inner">
+        <div id="no-result">검색 결과가 없습니다.</div>
+
+        <!-- ── 한국 리스트 ── -->
+        <section class="section" id="korean">
+            <div class="section-header">
+                <span class="section-badge">No. 01</span>
+                <h2 class="section-title">한국 <em>리스트</em></h2>
+                <span class="section-count" data-count-for="korean"></span>
+            </div>
+            <div class="artist-list">
+                <div class="artist-row"><div class="artist-name">김광석</div><div class="artist-songs"><span class="song-tag">잊어야 한다는 마음으로</span><span class="song-tag">서른 즈음에</span><span class="song-tag">너무 아픈 사랑은 사랑이 아니었음을</span><span class="song-tag">어느 60대 노부부 이야기</span></div></div>
+                <div class="artist-row"><div class="artist-name">김연지</div><div class="artist-songs"><span class="song-tag">위스키 언더락</span></div></div>
+                <div class="artist-row"><div class="artist-name">김윤아 (자우림)</div><div class="artist-songs"><span class="song-tag">고독한 항해</span><span class="song-tag">스물다섯, 스물하나</span><span class="song-tag">매직 카펫 라이드</span><span class="song-tag">일탈</span><span class="song-tag">팬이야</span><span class="song-tag">하하하쏭</span><span class="song-tag">미안해 널 미워해</span><span class="song-tag">야상곡</span></div></div>
+                <div class="artist-row"><div class="artist-name">김보경</div><div class="artist-songs"><span class="song-tag">혼자라고 생각 말기</span></div></div>
+                <div class="artist-row"><div class="artist-name">김나영</div><div class="artist-songs"><span class="song-tag">홀로</span><span class="song-tag">봄 내음보다 너를</span></div></div>
+                <div class="artist-row"><div class="artist-name">김건모</div><div class="artist-songs"><span class="song-tag">서울의 달</span><span class="song-tag">아름다운 이별</span><span class="song-tag">미안해요</span></div></div>
+                <div class="artist-row"><div class="artist-name">김범수</div><div class="artist-songs"><span class="song-tag">끝사랑</span><span class="song-tag">보고싶다</span></div></div>
+                <div class="artist-row"><div class="artist-name">권진아</div><div class="artist-songs"><span class="song-tag">위로</span></div></div>
+                <div class="artist-row"><div class="artist-name">거미</div><div class="artist-songs"><span class="song-tag">날 그만 잊어요</span><span class="song-tag">그대 돌아오면</span><span class="song-tag">기억상실</span><span class="song-tag">어른아이</span><span class="song-tag">미안해요</span><span class="song-tag">친구라도 될걸 그랬어</span><span class="song-tag">눈꽃</span><span class="song-tag">You Are My Everything</span><span class="song-tag">혼자만 하는 사랑</span><span class="song-tag">통증</span><span class="song-tag">아니</span><span class="song-tag">님은 먼 곳에</span></div></div>
+                <div class="artist-row"><div class="artist-name">나윤권</div><div class="artist-songs"><span class="song-tag">안부</span></div></div>
+                <div class="artist-row"><div class="artist-name">닐로</div><div class="artist-songs"><span class="song-tag">넋두리</span></div></div>
+                <div class="artist-row"><div class="artist-name">다비치</div><div class="artist-songs"><span class="song-tag">이 사랑</span><span class="song-tag">괜찮아 사랑이야</span><span class="song-tag">모르시나요</span></div></div>
+                <div class="artist-row"><div class="artist-name">RA.D (라디)</div><div class="artist-songs"><span class="song-tag">엄마</span><span class="song-tag">I'm in Love</span></div></div>
+                <div class="artist-row"><div class="artist-name">리쌍</div><div class="artist-songs"><span class="song-tag">발레리노</span></div></div>
+                <div class="artist-row"><div class="artist-name">리즈</div><div class="artist-songs"><span class="song-tag">그댄 행복해 살텐데</span></div></div>
+                <div class="artist-row"><div class="artist-name">린</div><div class="artist-songs"><span class="song-tag">사랑했잖아</span><span class="song-tag">이별 살이</span><span class="song-tag">My Destiny</span><span class="song-tag">물망초</span><span class="song-tag">날 위한 이별</span></div></div>
+                <div class="artist-row"><div class="artist-name">롤러코스터</div><div class="artist-songs"><span class="song-tag">습관</span><span class="song-tag">숨길 수 없어요</span></div></div>
+                <div class="artist-row"><div class="artist-name">러브홀릭</div><div class="artist-songs"><span class="song-tag">그대만 있다면</span><span class="song-tag">인형의 꿈</span></div></div>
+                <div class="artist-row"><div class="artist-name">럼블피쉬</div><div class="artist-songs"><span class="song-tag">비와 당신</span><span class="song-tag">기분 좋은 날</span><span class="song-tag">내 사랑 내 곁에</span></div></div>
+                <div class="artist-row"><div class="artist-name">르세라핌</div><div class="artist-songs"><span class="song-tag">Fearless</span></div></div>
+                <div class="artist-row"><div class="artist-name">마마무</div><div class="artist-songs"><span class="song-tag">데칼코마니</span></div></div>
+                <div class="artist-row"><div class="artist-name">마야</div><div class="artist-songs"><span class="song-tag">진달래꽃</span></div></div>
+                <div class="artist-row"><div class="artist-name">바이브</div><div class="artist-songs"><span class="song-tag">그 남자 그 여자</span></div></div>
+                <div class="artist-row"><div class="artist-name">박선주</div><div class="artist-songs"><span class="song-tag">귀로</span></div></div>
+                <div class="artist-row"><div class="artist-name">박화요비</div><div class="artist-songs"><span class="song-tag">그런 일은</span><span class="song-tag">어떤가요</span><span class="song-tag">당신과의 키스를 세어보아요</span><span class="song-tag">사랑은</span></div></div>
+                <div class="artist-row"><div class="artist-name">박정현</div><div class="artist-songs"><span class="song-tag">꿈에</span><span class="song-tag">이젠 그랬으면 좋겠네</span><span class="song-tag">편지할께요</span><span class="song-tag">사랑이 올까요</span><span class="song-tag">사랑보다 깊은 상처</span><span class="song-tag">몽중인</span></div></div>
+                <div class="artist-row"><div class="artist-name">빅마마</div><div class="artist-songs"><span class="song-tag">체념</span><span class="song-tag">Break Away</span><span class="song-tag">Sadness</span></div></div>
+                <div class="artist-row"><div class="artist-name">박보람</div><div class="artist-songs"><span class="song-tag">예뻐졌다</span></div></div>
+                <div class="artist-row"><div class="artist-name">박효신</div><div class="artist-songs"><span class="song-tag">바보</span><span class="song-tag">눈의 꽃</span></div></div>
+                <div class="artist-row"><div class="artist-name">백예린</div><div class="artist-songs"><span class="song-tag">Square</span><span class="song-tag">그건 아마 우리의 잘못은 아닐 거야</span><span class="song-tag">한계</span></div></div>
+                <div class="artist-row"><div class="artist-name">박정은</div><div class="artist-songs"><span class="song-tag">U Just</span><span class="song-tag">다시 사랑할 수 있을까</span></div></div>
+                <div class="artist-row"><div class="artist-name">벤</div><div class="artist-songs"><span class="song-tag">열애중</span><span class="song-tag">꿈처럼</span><span class="song-tag">오늘은 가지마</span></div></div>
+                <div class="artist-row"><div class="artist-name">백지영</div><div class="artist-songs"><span class="song-tag">잊지 말아요</span><span class="song-tag">사랑 안해</span><span class="song-tag">나쁜 사람</span><span class="song-tag">총맞은 것처럼</span><span class="song-tag">그 여자</span></div></div>
+                <div class="artist-row"><div class="artist-name">박기영</div><div class="artist-songs"><span class="song-tag">마지막 사랑</span><span class="song-tag">Butterfly</span><span class="song-tag">시작</span></div></div>
+                <div class="artist-row"><div class="artist-name">보보</div><div class="artist-songs"><span class="song-tag">늦은 후회</span></div></div>
+                <div class="artist-row"><div class="artist-name">별</div><div class="artist-songs"><span class="song-tag">12월 32일</span><span class="song-tag">I Think I</span><span class="song-tag">오후</span></div></div>
+                <div class="artist-row"><div class="artist-name">BMK</div><div class="artist-songs"><span class="song-tag">꽃피는 봄이 오면</span><span class="song-tag">하루살이</span></div></div>
+                <div class="artist-row"><div class="artist-name">소향</div><div class="artist-songs"><span class="song-tag">가슴만 알죠</span></div></div>
+                <div class="artist-row"><div class="artist-name">스페이스A</div><div class="artist-songs"><span class="song-tag">섹시한 남자</span><span class="song-tag">Again</span></div></div>
+                <div class="artist-row"><div class="artist-name">심규선</div><div class="artist-songs"><span class="song-tag">부디</span><span class="song-tag">화조도</span></div></div>
+                <div class="artist-row"><div class="artist-name">손디아</div><div class="artist-songs"><span class="song-tag">어른</span></div></div>
+                <div class="artist-row"><div class="artist-name">신효범</div><div class="artist-songs"><span class="song-tag">난 널 사랑해</span></div></div>
+                <div class="artist-row"><div class="artist-name">세정</div><div class="artist-songs"><span class="song-tag">꽃길</span></div></div>
+                <div class="artist-row"><div class="artist-name">서영은</div><div class="artist-songs"><span class="song-tag">너에게로 또다시</span></div></div>
+                <div class="artist-row"><div class="artist-name">성시경</div><div class="artist-songs"><span class="song-tag">너의 모든 순간</span><span class="song-tag">좋을 텐데</span><span class="song-tag">그대네요</span><span class="song-tag">잊지 말기로 해</span></div></div>
+                <div class="artist-row"><div class="artist-name">양지은</div><div class="artist-songs"><span class="song-tag">그 강을 건너지 마오</span></div></div>
+                <div class="artist-row"><div class="artist-name">이지연</div><div class="artist-songs"><span class="song-tag">바람아 멈추어 다오</span></div></div>
+                <div class="artist-row"><div class="artist-name">아이유</div><div class="artist-songs"><span class="song-tag">잔소리</span><span class="song-tag">밤편지</span><span class="song-tag">마음을 드려요</span><span class="song-tag">내 손을 잡아</span><span class="song-tag">좋은 날</span><span class="song-tag">너랑 나</span><span class="song-tag">너의 의미</span><span class="song-tag">금요일에 만나요</span><span class="song-tag">나의 옛날 이야기</span><span class="song-tag">나만 몰랐던 이야기</span><span class="song-tag">봄 사랑 벚꽃 말고</span><span class="song-tag">첫 이별 그날 밤</span><span class="song-tag">그대네요</span><span class="song-tag">있잖아</span></div></div>
+                <div class="artist-row"><div class="artist-name">안예은</div><div class="artist-songs"><span class="song-tag">상사화</span></div></div>
+                <div class="artist-row"><div class="artist-name">알리</div><div class="artist-songs"><span class="song-tag">365</span><span class="song-tag">별짓 다 해봤는데</span><span class="song-tag">서약</span></div></div>
+                <div class="artist-row"><div class="artist-name">어반자카파</div><div class="artist-songs"><span class="song-tag">널 사랑하지 않아</span></div></div>
+                <div class="artist-row"><div class="artist-name">어쿠스틱콜라보</div><div class="artist-songs"><span class="song-tag">묘해, 너와</span><span class="song-tag">너무 보고싶어</span></div></div>
+                <div class="artist-row"><div class="artist-name">에일리</div><div class="artist-songs"><span class="song-tag">첫눈처럼 너에게 가겠다</span><span class="song-tag">보여줄게</span></div></div>
+                <div class="artist-row"><div class="artist-name">양희은</div><div class="artist-songs"><span class="song-tag">사랑 그 쓸쓸함에 대하여</span></div></div>
+                <div class="artist-row"><div class="artist-name">오현란</div><div class="artist-songs"><span class="song-tag">조금만 사랑했다면</span><span class="song-tag">원</span><span class="song-tag">나 때문이죠</span></div></div>
+                <div class="artist-row"><div class="artist-name">유성은</div><div class="artist-songs"><span class="song-tag">이대로 멈춰</span></div></div>
+                <div class="artist-row"><div class="artist-name">윤미래</div><div class="artist-songs"><span class="song-tag">시간이 흐른 뒤</span><span class="song-tag">메모리즈</span><span class="song-tag">검은 행복</span><span class="song-tag">하루하루</span><span class="song-tag">경고</span></div></div>
+                <div class="artist-row"><div class="artist-name">이하이</div><div class="artist-songs"><span class="song-tag">한숨</span><span class="song-tag">홀로</span><span class="song-tag">1, 2, 3, 4</span></div></div>
+                <div class="artist-row"><div class="artist-name">웬디</div><div class="artist-songs"><span class="song-tag">When This Rain Stops</span></div></div>
+                <div class="artist-row"><div class="artist-name">이소라</div><div class="artist-songs"><span class="song-tag">Tears</span><span class="song-tag">시시콜콜한 이야기</span><span class="song-tag">바람이 분다</span><span class="song-tag">제발</span><span class="song-tag">나를 사랑하지 않는 그대에게</span><span class="song-tag">그냥 이렇게</span><span class="song-tag">난 행복해</span><span class="song-tag">청혼</span><span class="song-tag">처음 느낌 그대로</span><span class="song-tag">고백</span><span class="song-tag">더위</span><span class="song-tag">기억해줘</span><span class="song-tag">쉼</span><span class="song-tag">너무 다른 널 보며</span></div></div>
+                <div class="artist-row"><div class="artist-name">이은미</div><div class="artist-songs"><span class="song-tag">헤어지는 중입니다</span><span class="song-tag">애인 있어요</span></div></div>
+                <div class="artist-row"><div class="artist-name">이선희</div><div class="artist-songs"><span class="song-tag">그 중에 그대를 만나</span><span class="song-tag">인연</span><span class="song-tag">추억의 책장을 넘기면</span><span class="song-tag">나 항상 그대를</span></div></div>
+                <div class="artist-row"><div class="artist-name">에코</div><div class="artist-songs"><span class="song-tag">행복한 나를</span></div></div>
+                <div class="artist-row"><div class="artist-name">이승철</div><div class="artist-songs"><span class="song-tag">서쪽 하늘</span></div></div>
+                <div class="artist-row"><div class="artist-name">인순이</div><div class="artist-songs"><span class="song-tag">거위의 꿈</span><span class="song-tag">아버지</span><span class="song-tag">밤이면 밤마다</span></div></div>
+                <div class="artist-row"><div class="artist-name">임정희</div><div class="artist-songs"><span class="song-tag">눈물이 안 났어</span></div></div>
+                <div class="artist-row"><div class="artist-name">전인권</div><div class="artist-songs"><span class="song-tag">걱정 말아요 그대</span><span class="song-tag">그것만이 내 세상</span></div></div>
+                <div class="artist-row"><div class="artist-name">지영선</div><div class="artist-songs"><span class="song-tag">가슴앓이</span></div></div>
+                <div class="artist-row"><div class="artist-name">잔나비</div><div class="artist-songs"><span class="song-tag">주저하는 연인들을 위한</span></div></div>
+                <div class="artist-row"><div class="artist-name">장혜진</div><div class="artist-songs"><span class="song-tag">1994년 어느 늦은 밤</span></div></div>
+                <div class="artist-row"><div class="artist-name">정인</div><div class="artist-songs"><span class="song-tag">오르막길</span><span class="song-tag">미워요</span><span class="song-tag">장마</span><span class="song-tag">사랑은</span></div></div>
+                <div class="artist-row"><div class="artist-name">장윤정</div><div class="artist-songs"><span class="song-tag">이따이따요</span><span class="song-tag">꽃</span><span class="song-tag">초혼</span></div></div>
+                <div class="artist-row"><div class="artist-name">조수미</div><div class="artist-songs"><span class="song-tag">나 가거든</span></div></div>
+                <div class="artist-row"><div class="artist-name">조원선</div><div class="artist-songs"><span class="song-tag">아무도 아무것도</span></div></div>
+                <div class="artist-row"><div class="artist-name">주영훈</div><div class="artist-songs"><span class="song-tag">우리 사랑 이대로</span></div></div>
+                <div class="artist-row"><div class="artist-name">지선</div><div class="artist-songs"><span class="song-tag">이별 못한 이별</span></div></div>
+                <div class="artist-row"><div class="artist-name">최유리</div><div class="artist-songs"><span class="song-tag">숲</span></div></div>
+                <div class="artist-row"><div class="artist-name">최호섭</div><div class="artist-songs"><span class="song-tag">세월이 가면</span></div></div>
+                <div class="artist-row"><div class="artist-name">태연</div><div class="artist-songs"><span class="song-tag">만약에</span><span class="song-tag">들리나요</span></div></div>
+                <div class="artist-row"><div class="artist-name">펀치</div><div class="artist-songs"><span class="song-tag">안녕 내 전부였던 너</span></div></div>
+                <div class="artist-row"><div class="artist-name">포맨</div><div class="artist-songs"><span class="song-tag">다시 사랑할 수 있을까</span></div></div>
+                <div class="artist-row"><div class="artist-name">헤이즈</div><div class="artist-songs"><span class="song-tag">비도 오고 그래서</span></div></div>
+                <div class="artist-row"><div class="artist-name">한영애</div><div class="artist-songs"><span class="song-tag">누구 없소</span></div></div>
+                <div class="artist-row"><div class="artist-name">황가람</div><div class="artist-songs"><span class="song-tag">나는 반딧불</span></div></div>
+                <div class="artist-row"><div class="artist-name">화사</div><div class="artist-songs"><span class="song-tag">Good Goodbye</span></div></div>
+            </div>
+        </section>
+
+        <!-- ── 팝 리스트 ── -->
+        <section class="section" id="pop">
+            <div class="section-header">
+                <span class="section-badge">No. 02</span>
+                <h2 class="section-title">팝 <em>Pop</em></h2>
+                <span class="section-count" data-count-for="pop"></span>
+            </div>
+            <div class="artist-list">
+                <div class="artist-row"><div class="artist-name">Amy Winehouse<small>에이미 와인하우스</small></div><div class="artist-songs"><span class="song-tag">Rehab</span></div></div>
+                <div class="artist-row"><div class="artist-name">Alicia Keys<small>앨리샤 키스</small></div><div class="artist-songs"><span class="song-tag">If I Ain't Got You</span><span class="song-tag">Fallin'</span><span class="song-tag">No One</span></div></div>
+                <div class="artist-row"><div class="artist-name">Ariana Grande<small>아리아나 그란데</small></div><div class="artist-songs"><span class="song-tag">Almost Is Never Enough</span></div></div>
+                <div class="artist-row"><div class="artist-name">Adele<small>아델</small></div><div class="artist-songs"><span class="song-tag">Someone Like You</span><span class="song-tag">Rolling in the Deep</span><span class="song-tag">Hello</span></div></div>
+                <div class="artist-row"><div class="artist-name">Celine Dion<small>셀린 디온</small></div><div class="artist-songs"><span class="song-tag">My Heart Will Go On</span><span class="song-tag">Beauty and the Beast (미녀와 야수 OST)</span></div></div>
+                <div class="artist-row"><div class="artist-name">H.E.R.<small>에이치이알</small></div><div class="artist-songs"><span class="song-tag">Best Part</span></div></div>
+                <div class="artist-row"><div class="artist-name">HONNE<small>혼</small></div><div class="artist-songs"><span class="song-tag">Warm On A Cold Night</span></div></div>
+                <div class="artist-row"><div class="artist-name">Lady Gaga<small>레이디 가가</small></div><div class="artist-songs"><span class="song-tag">Shallow</span><span class="song-tag">Always Remember Us This Way</span><span class="song-tag">I'll Never Love Again</span></div></div>
+                <div class="artist-row"><div class="artist-name">Mandy Moore<small>맨디 무어</small></div><div class="artist-songs"><span class="song-tag">Only Hope</span></div></div>
+                <div class="artist-row"><div class="artist-name">Anne-Marie<small>앤마리</small></div><div class="artist-songs"><span class="song-tag">2002</span></div></div>
+                <div class="artist-row"><div class="artist-name">Joss Stone<small>조스 스톤</small></div><div class="artist-songs"><span class="song-tag">L-O-V-E</span></div></div>
+                <div class="artist-row"><div class="artist-name">Duffy<small>더피</small></div><div class="artist-songs"><span class="song-tag">Mercy</span></div></div>
+                <div class="artist-row"><div class="artist-name">Whitney Houston<small>휘트니 휴스턴</small></div><div class="artist-songs"><span class="song-tag">I Have Nothing</span><span class="song-tag">I Will Always Love You</span><span class="song-tag">Greatest Love of All</span><span class="song-tag">When You Believe</span></div></div>
+                <div class="artist-row"><div class="artist-name">Mariah Carey<small>머라이어 캐리</small></div><div class="artist-songs"><span class="song-tag">Hero</span><span class="song-tag">My All</span><span class="song-tag">I'll Be There</span><span class="song-tag">Endless Love (feat. Luther Vandross)</span><span class="song-tag">All I Want for Christmas Is You</span><span class="song-tag">Without You</span></div></div>
+                <div class="artist-row"><div class="artist-name">Corinne Bailey Rae<small>코린 베일리 레이</small></div><div class="artist-songs"><span class="song-tag">Like a Star</span></div></div>
+                <div class="artist-row"><div class="artist-name">인어공주 OST</div><div class="artist-songs"><span class="song-tag">Part of Your World</span></div></div>
+                <div class="artist-row"><div class="artist-name">Sam Smith<small>샘 스미스</small></div><div class="artist-songs"><span class="song-tag">I'm Not the Only One</span></div></div>
+                <div class="artist-row"><div class="artist-name">물랑루즈 OST</div><div class="artist-songs"><span class="song-tag">Lady Marmalade</span></div></div>
+                <div class="artist-row"><div class="artist-name">Christina Aguilera<small>크리스티나 아길레라</small></div><div class="artist-songs"><span class="song-tag">Reflection</span><span class="song-tag">Come On Over (All I Want Is You)</span><span class="song-tag">Beautiful</span><span class="song-tag">Save Me from Myself</span><span class="song-tag">I Turn to You</span><span class="song-tag">What a Girl Wants</span></div></div>
+                <div class="artist-row"><div class="artist-name">Beyoncé<small>비욘세</small></div><div class="artist-songs"><span class="song-tag">Halo</span><span class="song-tag">If I Were a Boy</span><span class="song-tag">Honesty</span><span class="song-tag">One Night Only</span></div></div>
+                <div class="artist-row"><div class="artist-name">Sia<small>시아</small></div><div class="artist-songs"><span class="song-tag">Chandelier</span><span class="song-tag">Titanium (feat. David Guetta)</span></div></div>
+                <div class="artist-row"><div class="artist-name">Idina Menzel<small>이디나 멘젤</small></div><div class="artist-songs"><span class="song-tag">Let It Go (겨울왕국 OST)</span></div></div>
+                <div class="artist-row"><div class="artist-name">Kelly Clarkson<small>켈리 클락슨</small></div><div class="artist-songs"><span class="song-tag">Because of You</span></div></div>
+                <div class="artist-row"><div class="artist-name">겨울왕국 OST</div><div class="artist-songs"><span class="song-tag">Do You Want to Build a Snowman?</span></div></div>
+                <div class="artist-row"><div class="artist-name">Naomi Scott<small>나오미 스콧</small></div><div class="artist-songs"><span class="song-tag">Speechless (알라딘 OST)</span></div></div>
+                <div class="artist-row"><div class="artist-name">Mena Massoud &amp; Naomi Scott<small>메나 마수드 &amp; 나오미 스콧</small></div><div class="artist-songs"><span class="song-tag">A Whole New World</span></div></div>
+                <div class="artist-row"><div class="artist-name">Tamia<small>타미아</small></div><div class="artist-songs"><span class="song-tag">Officially Missing You</span></div></div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer>
+    <strong>태사비애 &amp; 지애</strong> &nbsp;·&nbsp; Song Requests
+</footer>
+
+<script>
+    const rows = document.querySelectorAll('.artist-row');
+    rows.forEach(row => {
+        const nameEl = row.querySelector('.artist-name');
+        const tags   = row.querySelectorAll('.song-tag');
+        nameEl.dataset.original = nameEl.innerHTML;
+        nameEl.dataset.text     = nameEl.textContent;
+        tags.forEach(t => t.dataset.original = t.textContent);
+    });
+
+    // 섹션별 카운트 표시
+    document.querySelectorAll('[data-count-for]').forEach(el => {
+        const sec = document.getElementById(el.dataset.countFor);
+        const total = sec.querySelectorAll('.artist-row').length;
+        let songs = 0;
+        sec.querySelectorAll('.song-tag').forEach(() => songs++);
+        el.textContent = `${total}명 · ${songs}곡`;
+    });
+
+    const input    = document.getElementById('search-input');
+    const countEl  = document.getElementById('search-count');
+    const noResult = document.getElementById('no-result');
+    const sections = document.querySelectorAll('.section');
+
+    function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+    function hlHtml(html, q) {
+        return html.replace(/>([^<]+)</g, (m, txt) => {
+            if (!txt.trim()) return m;
+            return '>' + txt.replace(new RegExp(`(${esc(q)})`, 'gi'), '<mark class="highlight">$1</mark>') + '<';
+        });
+    }
+
+    function restore() {
+        rows.forEach(row => {
+            row.querySelector('.artist-name').innerHTML = row.querySelector('.artist-name').dataset.original;
+            row.querySelectorAll('.song-tag').forEach(t => t.innerHTML = t.dataset.original);
+            row.classList.remove('hidden');
+        });
+        sections.forEach(s => s.classList.remove('section-hidden'));
+        countEl.textContent = '';
+        noResult.style.display = 'none';
+    }
+
+    input.addEventListener('input', () => {
+        const q = input.value.trim();
+        if (!q) { restore(); return; }
+
+        let total = 0;
+        rows.forEach(row => {
+            const nameEl   = row.querySelector('.artist-name');
+            const tags     = row.querySelectorAll('.song-tag');
+            const nameText = nameEl.dataset.text || '';
+            const nameHtml = nameEl.dataset.original;
+            const nameMatch = nameText.toLowerCase().includes(q.toLowerCase());
+            let songMatch = false;
+
+            tags.forEach(t => {
+                const orig = t.dataset.original;
+                if (orig.toLowerCase().includes(q.toLowerCase())) {
+                    songMatch = true;
+                    t.innerHTML = orig.replace(new RegExp(`(${esc(q)})`, 'gi'), '<mark class="highlight">$1</mark>');
+                } else {
+                    t.innerHTML = orig;
+                }
+            });
+
+            if (nameMatch || songMatch) {
+                row.classList.remove('hidden');
+                nameEl.innerHTML = nameMatch ? hlHtml(nameHtml, q) : nameHtml;
+                total++;
+            } else {
+                row.classList.add('hidden');
+                nameEl.innerHTML = nameHtml;
+            }
+        });
+
+        sections.forEach(sec => {
+            sec.classList.toggle('section-hidden', sec.querySelectorAll('.artist-row:not(.hidden)').length === 0);
+        });
+        countEl.textContent = total > 0 ? `${total}건` : '';
+        noResult.style.display = total === 0 ? 'block' : 'none';
+    });
+
+    // nav
+    const scrollArea = document.querySelector('.scroll-area');
+    const navLinks = document.querySelectorAll('.nav-group a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.getElementById(link.dataset.target);
+            if (!target) return;
+            // scroll-area 기준 상대 위치 = (타겟 위치) - (scroll-area 위치) + 현재 스크롤
+            const targetRect = target.getBoundingClientRect();
+            const areaRect = scrollArea.getBoundingClientRect();
+            const top = targetRect.top - areaRect.top + scrollArea.scrollTop - 8;
+            scrollArea.scrollTo({ top, behavior: 'smooth' });
+        });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                navLinks.forEach(a => a.classList.remove('active'));
+                const link = document.querySelector(`.nav-group a[data-target="${e.target.id}"]`);
+                if (link) link.classList.add('active');
+            }
+        });
+    }, { root: scrollArea, rootMargin: '-30% 0px -60% 0px' });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
