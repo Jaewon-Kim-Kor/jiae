@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>태사비애 · 지애 Song Requests</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f8fc;
+            --white: #ffffff;
+            --ink: #1e1e2e;
+            --sub: #8080a0;
+            --line: #e8e8f0;
+            --line2: #f0f0f8;
+            --accent: #7c6af7;
+            --accent2: #f06292;
+            --tag-bg: #f0effe;
+            --tag-border: #e0dbfb;
+            --tag-hover: #7c6af7;
+            --highlight: #ffe066;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; overflow: hidden; }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ─── HEADER (컴팩트) ─── */
+        header {
+            background: linear-gradient(135deg, #a78bfa 0%, #f472b6 60%, #fb923c 100%);
+            padding: 18px 24px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        header::after {
+            content: '♪';
+            position: absolute;
+            font-size: 90px;
+            color: rgba(255,255,255,0.08);
+            right: 18px; top: 50%;
+            transform: translateY(-50%);
+            line-height: 1;
+            pointer-events: none;
+        }
+        .h-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            line-height: 1;
+        }
+        .h-title span {
+            font-style: italic;
+            color: rgba(255,255,255,0.75);
+            font-weight: 400;
+            font-size: 0.8em;
+            margin: 0 2px;
+        }
+        .h-sub {
+            font-size: 10.5px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            color: rgba(255,255,255,0.85);
+            text-transform: uppercase;
+            padding-left: 14px;
+            border-left: 1px solid rgba(255,255,255,0.35);
+            line-height: 1.3;
+        }
+
+        /* ─── 컨트롤 바: 검색 + 네비 통합 ─── */
+        .control-bar {
+            background: var(--white);
+            border-bottom: 1px solid var(--line);
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 1px 8px rgba(124,106,247,0.06);
+            flex-shrink: 0;
+            z-index: 10;
+        }
+        .nav-group {
+            display: flex;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+        .nav-group a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            color: #9090b0;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        .nav-group a:hover {
+            color: var(--accent);
+            background: var(--tag-bg);
+        }
+        .nav-group a.active {
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 420px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 7px 32px 7px 14px;
+            background: var(--bg);
+            border: 1.5px solid var(--line);
+            border-radius: 18px;
+            color: var(--ink);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12.5px;
+            outline: none;
+            transition: all 0.15s;
+        }
+        .search-box input::placeholder { color: #b0b0c8; }
+        .search-box input:focus {
+            border-color: var(--accent);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(124,106,247,0.1);
+        }
+        .search-icon {
+            position: absolute;
+            right: 12px; top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent);
+            font-size: 13px;
+            pointer-events: none;
+        }
+        #search-count {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            white-space: nowrap;
+            min-width: 0;
+        }
+
+        /* ─── MAIN (스크롤 영역) ─── */
+        .scroll-area {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            min-height: 0;
+        }
+        .main-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 18px 24px 24px;
+        }
+
+        /* ─── SECTION ─── */
+        .section {
+            margin-bottom: 24px;
+            scroll-margin-top: 60px;
+        }
+        .section.section-hidden { display: none; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1.5px solid var(--line);
+        }
+        .section-badge {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            padding: 2px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+        .section-title em { font-style: italic; color: var(--accent); }
+        .section-count {
+            margin-left: auto;
+            font-size: 11px;
+            color: var(--sub);
+            font-weight: 500;
+        }
+
+        /* ─── ROWS (컴팩트) ─── */
+        .artist-list {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .artist-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            border-bottom: 1px solid var(--line2);
+            transition: background 0.12s;
+        }
+        .artist-row:last-child { border-bottom: none; }
+        .artist-row:hover { background: #faf9ff; }
+        .artist-row.hidden { display: none; }
+
+        .highlight {
+            background: var(--highlight);
+            color: var(--ink);
+            border-radius: 2px;
+            padding: 0 1px;
+        }
+
+        .artist-name {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ink);
+            padding: 8px 12px 8px 14px;
+            border-right: 1px solid var(--line2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.35;
+            word-break: keep-all;
+            background: #fafaff;
+        }
+        .artist-name small {
+            font-size: 10px;
+            font-weight: 400;
+            color: #a0a0c0;
+            margin-top: 1px;
+        }
+
+        .artist-songs {
+            padding: 7px 14px 7px 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            align-items: center;
+            align-content: center;
+        }
+        .song-tag {
+            font-size: 11.5px;
+            font-weight: 400;
+            color: #5a4e8a;
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            border-radius: 4px;
+            padding: 2px 9px;
+            line-height: 1.55;
+            transition: all 0.12s;
+            cursor: default;
+        }
+        .song-tag:hover {
+            background: var(--tag-hover);
+            color: #fff;
+            border-color: var(--tag-hover);
+        }
+
+        /* ─── NO RESULT / 로드 실패 ─── */
+        #no-result {
+            display: none;
+            text-align: center;
+            padding: 48px 0;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 15px;
+            color: #c0c0d8;
+        }
+        #no-result .hint {
+            display: block;
+            margin-top: 10px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-style: normal;
+            font-size: 12px;
+            color: #a0a0c0;
+            line-height: 1.5;
+            letter-spacing: 0;
+        }
+        #no-result code {
+            background: #f0effe;
+            color: #5a4e8a;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-size: 11.5px;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: var(--white);
+            border-top: 1px solid var(--line);
+            font-size: 11px;
+            color: #c0c0d8;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+        footer strong {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 600px) {
+            header { padding: 14px 16px; gap: 10px; }
+            .h-title { font-size: 18px; }
+            .h-sub { font-size: 9px; letter-spacing: 1.5px; padding-left: 10px; }
+            .control-bar { padding: 8px 12px; gap: 8px; flex-wrap: wrap; }
+            .nav-group { width: 100%; order: 2; justify-content: center; }
+            .search-box { max-width: 100%; order: 1; }
+            .main-inner { padding: 14px 12px 16px; }
+            .artist-row { grid-template-columns: 95px 1fr; }
+            .artist-name { font-size: 11px; padding: 7px 8px; }
+            .artist-name small { font-size: 9px; }
+            .song-tag { font-size: 11px; padding: 2px 7px; }
+            .section-title { font-size: 16px; }
+            .section-count { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="h-title">태사비애 <span>&amp;</span> 지애</div>
+    <div class="h-sub">Song Requests<br>한국 · 팝</div>
+</header>
+
+<div class="control-bar">
+    <div class="nav-group" id="main-nav"></div>
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="가수 또는 곡 검색..." autocomplete="off">
+        <span class="search-icon">🔍</span>
+    </div>
+    <div id="search-count"></div>
+</div>
+
+<main class="scroll-area">
+    <div class="main-inner">
+        <div id="no-result">검색 결과가 없습니다.</div>
+        <!-- 섹션은 list3.json을 fetch해 동적으로 렌더링됩니다. -->
+    </div>
+</main>
+
+<footer>
+    <strong>태사비애 &amp; 지애</strong> &nbsp;·&nbsp; Song Requests
+</footer>
+
+<script>
+    (async function () {
+        let data;
+        try {
+            const res = await fetch('list3.json', { cache: 'no-cache' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            data = await res.json();
+        } catch (err) {
+            showLoadError(err);
+            return;
+        }
+        renderNav(data.sections);
+        renderSections(data.sections);
+        initialize();
+    })();
+
+    function showLoadError(err) {
+        const nr = document.getElementById('no-result');
+        nr.style.display = 'block';
+        nr.innerHTML =
+            'list3.json을 불러올 수 없습니다.' +
+            '<span class="hint">' +
+            '<code>file://</code>로 직접 연 경우 브라우저가 fetch를 차단합니다.<br>' +
+            '이 폴더에서 <code>python -m http.server</code> 같은 로컬 서버를 띄운 뒤<br>' +
+            '<code>http://localhost:8000/list3.html</code> 로 열어주세요.<br>' +
+            '(' + escapeHtml(err.message) + ')' +
+            '</span>';
+    }
+
+    function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, c => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        })[c]);
+    }
+
+    function renderNav(sections) {
+        const nav = document.getElementById('main-nav');
+        sections.forEach((sec, i) => {
+            const a = document.createElement('a');
+            a.href = 'javascript:void(0)';
+            a.dataset.target = sec.id;
+            a.textContent = sec.navLabel || sec.title;
+            if (i === 0) a.classList.add('active');
+            nav.appendChild(a);
+        });
+    }
+
+    function renderSections(sections) {
+        const container = document.querySelector('.main-inner');
+        sections.forEach(sec => {
+            const section = document.createElement('section');
+            section.className = 'section';
+            section.id = sec.id;
+
+            const header = document.createElement('div');
+            header.className = 'section-header';
+
+            const badge = document.createElement('span');
+            badge.className = 'section-badge';
+            badge.textContent = sec.badge || '';
+
+            const title = document.createElement('h2');
+            title.className = 'section-title';
+            title.appendChild(document.createTextNode((sec.title || '') + ' '));
+            if (sec.titleEm) {
+                const em = document.createElement('em');
+                em.textContent = sec.titleEm;
+                title.appendChild(em);
+            }
+
+            const count = document.createElement('span');
+            count.className = 'section-count';
+            count.dataset.countFor = sec.id;
+
+            header.appendChild(badge);
+            header.appendChild(title);
+            header.appendChild(count);
+            section.appendChild(header);
+
+            const list = document.createElement('div');
+            list.className = 'artist-list';
+            sec.artists.forEach(a => {
+                const row = document.createElement('div');
+                row.className = 'artist-row';
+
+                const nameEl = document.createElement('div');
+                nameEl.className = 'artist-name';
+                nameEl.appendChild(document.createTextNode(a.name));
+                if (a.subtitle) {
+                    const small = document.createElement('small');
+                    small.textContent = a.subtitle;
+                    nameEl.appendChild(small);
+                }
+
+                const songsEl = document.createElement('div');
+                songsEl.className = 'artist-songs';
+                (a.songs || []).forEach(s => {
+                    const span = document.createElement('span');
+                    span.className = 'song-tag';
+                    span.textContent = s;
+                    songsEl.appendChild(span);
+                });
+
+                row.appendChild(nameEl);
+                row.appendChild(songsEl);
+                list.appendChild(row);
+            });
+            section.appendChild(list);
+            container.appendChild(section);
+        });
+    }
+
+    function initialize() {
+        const rows = document.querySelectorAll('.artist-row');
+        rows.forEach(row => {
+            const nameEl = row.querySelector('.artist-name');
+            const tags   = row.querySelectorAll('.song-tag');
+            nameEl.dataset.original = nameEl.innerHTML;
+            nameEl.dataset.text     = nameEl.textContent;
+            tags.forEach(t => t.dataset.original = t.textContent);
+        });
+
+        document.querySelectorAll('[data-count-for]').forEach(el => {
+            const sec = document.getElementById(el.dataset.countFor);
+            const total = sec.querySelectorAll('.artist-row').length;
+            let songs = 0;
+            sec.querySelectorAll('.song-tag').forEach(() => songs++);
+            el.textContent = `${total}명 · ${songs}곡`;
+        });
+
+        const input    = document.getElementById('search-input');
+        const countEl  = document.getElementById('search-count');
+        const noResult = document.getElementById('no-result');
+        const sections = document.querySelectorAll('.section');
+
+        function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+        function hlHtml(html, q) {
+            return html.replace(/>([^<]+)</g, (m, txt) => {
+                if (!txt.trim()) return m;
+                return '>' + txt.replace(new RegExp(`(${esc(q)})`, 'gi'), '<mark class="highlight">$1</mark>') + '<';
+            });
+        }
+
+        function restore() {
+            rows.forEach(row => {
+                row.querySelector('.artist-name').innerHTML = row.querySelector('.artist-name').dataset.original;
+                row.querySelectorAll('.song-tag').forEach(t => t.innerHTML = t.dataset.original);
+                row.classList.remove('hidden');
+            });
+            sections.forEach(s => s.classList.remove('section-hidden'));
+            countEl.textContent = '';
+            noResult.style.display = 'none';
+        }
+
+        input.addEventListener('input', () => {
+            const q = input.value.trim();
+            if (!q) { restore(); return; }
+
+            let total = 0;
+            rows.forEach(row => {
+                const nameEl   = row.querySelector('.artist-name');
+                const tags     = row.querySelectorAll('.song-tag');
+                const nameText = nameEl.dataset.text || '';
+                const nameHtml = nameEl.dataset.original;
+                const nameMatch = nameText.toLowerCase().includes(q.toLowerCase());
+                let songMatch = false;
+
+                tags.forEach(t => {
+                    const orig = t.dataset.original;
+                    if (orig.toLowerCase().includes(q.toLowerCase())) {
+                        songMatch = true;
+                        t.innerHTML = orig.replace(new RegExp(`(${esc(q)})`, 'gi'), '<mark class="highlight">$1</mark>');
+                    } else {
+                        t.innerHTML = orig;
+                    }
+                });
+
+                if (nameMatch || songMatch) {
+                    row.classList.remove('hidden');
+                    nameEl.innerHTML = nameMatch ? hlHtml(nameHtml, q) : nameHtml;
+                    total++;
+                } else {
+                    row.classList.add('hidden');
+                    nameEl.innerHTML = nameHtml;
+                }
+            });
+
+            sections.forEach(sec => {
+                sec.classList.toggle('section-hidden', sec.querySelectorAll('.artist-row:not(.hidden)').length === 0);
+            });
+            countEl.textContent = total > 0 ? `${total}건` : '';
+            noResult.style.display = total === 0 ? 'block' : 'none';
+        });
+
+        const scrollArea = document.querySelector('.scroll-area');
+        const navLinks = document.querySelectorAll('.nav-group a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.getElementById(link.dataset.target);
+                if (!target) return;
+                const targetRect = target.getBoundingClientRect();
+                const areaRect = scrollArea.getBoundingClientRect();
+                const top = targetRect.top - areaRect.top + scrollArea.scrollTop - 8;
+                scrollArea.scrollTo({ top, behavior: 'smooth' });
+            });
+        });
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    navLinks.forEach(a => a.classList.remove('active'));
+                    const link = document.querySelector(`.nav-group a[data-target="${e.target.id}"]`);
+                    if (link) link.classList.add('active');
+                }
+            });
+        }, { root: scrollArea, rootMargin: '-30% 0px -60% 0px' });
+        sections.forEach(s => observer.observe(s));
+    }
+</script>
+</body>
+</html>
