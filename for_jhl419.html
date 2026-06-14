@@ -125,6 +125,7 @@
             text-align: center;
             font-size: clamp(1.05rem, 3.4vw, 1.32rem);
             white-space: pre-line;     /* 줄바꿈 그대로 표시 */
+            word-break: keep-all;      /* 한국어 단어 중간에서 끊기지 않게 */
             background: linear-gradient(180deg, rgba(255,253,247,.7), rgba(245,236,219,.45));
             border-radius: 22px;
             box-shadow: 0 18px 40px -28px rgba(120,95,55,.5);
@@ -204,6 +205,7 @@
         /* 모바일: 가사 영역 약 5% 넓힘 (좌우 여백 축소) */
         @media (max-width: 600px){
             .lyrics{ padding-left: 1.25rem; padding-right: 1.25rem; }
+            .verse{ padding-left: 1.4rem; padding-right: 1.4rem; }
         }
     </style>
 </head>
