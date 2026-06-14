@@ -178,6 +178,19 @@
             padding: 18px 0 24px;
         }
 
+        .legend {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0 4px 14px;
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--sub);
+        }
+        .legend-item { display: inline-flex; align-items: center; gap: 5px; }
+        .legend-ico { font-size: 13px; }
+
         /* ─── SECTION ─── */
         .section {
             margin-bottom: 24px;
@@ -357,6 +370,10 @@
 
 <main class="scroll-area">
     <div class="main-inner">
+        <div class="legend">
+            <span class="legend-item"><span class="legend-ico">☀️</span> 밝은 곡</span>
+            <span class="legend-item"><span class="legend-ico">🌈</span> 희망적 · 벅찬 곡</span>
+        </div>
         <div id="no-result">검색 결과가 없습니다.</div>
 
         <!-- ── 헬곡 리스트 ── -->
@@ -376,7 +393,7 @@
                 <div class="artist-row"><div class="artist-name">소향</div><div class="artist-songs"><span class="song-tag">가슴만 알죠</span><span class="song-tag">잊었니</span></div></div>
                 <div class="artist-row"><div class="artist-name">소찬휘</div><div class="artist-songs"><span class="song-tag">보낼 수밖에 없는 난</span></div></div>
                 <div class="artist-row"><div class="artist-name">서문탁</div><div class="artist-songs"><span class="song-tag">사랑 결코 시들지 않는</span><span class="song-tag">사미인곡</span></div></div>
-                <div class="artist-row"><div class="artist-name">아이유</div><div class="artist-songs"><span class="song-tag">좋은 날</span><span class="song-tag">너랑 나</span><span class="song-tag">내 손을 잡아</span></div></div>
+                <div class="artist-row"><div class="artist-name">아이유</div><div class="artist-songs"><span class="song-tag">☀️ 좋은 날</span><span class="song-tag">☀️ 너랑 나</span><span class="song-tag">☀️ 내 손을 잡아</span></div></div>
                 <div class="artist-row"><div class="artist-name">알리</div><div class="artist-songs"><span class="song-tag">365</span><span class="song-tag">별짓 다 해봤는데</span><span class="song-tag">서약</span></div></div>
                 <div class="artist-row"><div class="artist-name">에일리</div><div class="artist-songs"><span class="song-tag">첫눈처럼 너에게 가겠다</span><span class="song-tag">보여줄게</span></div></div>
                 <div class="artist-row"><div class="artist-name">이선희</div><div class="artist-songs"><span class="song-tag">인연</span><span class="song-tag">그 중에 그대를 만나</span></div></div>
@@ -398,7 +415,7 @@
             <div class="artist-list">
                 <div class="artist-row"><div class="artist-name">김광석</div><div class="artist-songs"><span class="song-tag">잊어야 한다는 마음으로</span><span class="song-tag">서른 즈음에</span><span class="song-tag">너무 아픈 사랑은 사랑이 아니었음을</span><span class="song-tag">어느 60대 노부부 이야기</span></div></div>
                 <div class="artist-row"><div class="artist-name">김연지</div><div class="artist-songs"><span class="song-tag">위스키 언더락</span></div></div>
-                <div class="artist-row"><div class="artist-name">김윤아 (자우림)</div><div class="artist-songs"><span class="song-tag">고독한 항해</span><span class="song-tag">스물다섯, 스물하나</span><span class="song-tag">매직 카펫 라이드</span><span class="song-tag">일탈</span><span class="song-tag">팬이야</span><span class="song-tag">하하하쏭</span><span class="song-tag">미안해 널 미워해</span><span class="song-tag">야상곡</span></div></div>
+                <div class="artist-row"><div class="artist-name">김윤아 (자우림)</div><div class="artist-songs"><span class="song-tag">고독한 항해</span><span class="song-tag">☀️ 스물다섯, 스물하나</span><span class="song-tag">☀️ 매직 카펫 라이드</span><span class="song-tag">☀️ 일탈</span><span class="song-tag">팬이야</span><span class="song-tag">☀️ 하하하쏭</span><span class="song-tag">미안해 널 미워해</span><span class="song-tag">야상곡</span></div></div>
                 <div class="artist-row"><div class="artist-name">김보경</div><div class="artist-songs"><span class="song-tag">혼자라고 생각 말기</span></div></div>
                 <div class="artist-row"><div class="artist-name">김나영</div><div class="artist-songs"><span class="song-tag">홀로</span><span class="song-tag">봄 내음보다 너를</span></div></div>
                 <div class="artist-row"><div class="artist-name">김건모</div><div class="artist-songs"><span class="song-tag">서울의 달</span><span class="song-tag">아름다운 이별</span><span class="song-tag">미안해요</span></div></div>
@@ -414,33 +431,33 @@
                 <div class="artist-row"><div class="artist-name">린</div><div class="artist-songs"><span class="song-tag">사랑했잖아</span><span class="song-tag">이별 살이</span><span class="song-tag">My Destiny</span><span class="song-tag">물망초</span><span class="song-tag">날 위한 이별</span></div></div>
                 <div class="artist-row"><div class="artist-name">롤러코스터</div><div class="artist-songs"><span class="song-tag">습관</span><span class="song-tag">숨길 수 없어요</span></div></div>
                 <div class="artist-row"><div class="artist-name">러브홀릭</div><div class="artist-songs"><span class="song-tag">그대만 있다면</span><span class="song-tag">인형의 꿈</span></div></div>
-                <div class="artist-row"><div class="artist-name">럼블피쉬</div><div class="artist-songs"><span class="song-tag">비와 당신</span><span class="song-tag">기분 좋은 날</span><span class="song-tag">내 사랑 내 곁에</span></div></div>
-                <div class="artist-row"><div class="artist-name">르세라핌</div><div class="artist-songs"><span class="song-tag">Fearless</span></div></div>
-                <div class="artist-row"><div class="artist-name">마마무</div><div class="artist-songs"><span class="song-tag">데칼코마니</span></div></div>
+                <div class="artist-row"><div class="artist-name">럼블피쉬</div><div class="artist-songs"><span class="song-tag">비와 당신</span><span class="song-tag">☀️ 기분 좋은 날</span><span class="song-tag">내 사랑 내 곁에</span></div></div>
+                <div class="artist-row"><div class="artist-name">르세라핌</div><div class="artist-songs"><span class="song-tag">☀️ Fearless</span></div></div>
+                <div class="artist-row"><div class="artist-name">마마무</div><div class="artist-songs"><span class="song-tag">☀️ 데칼코마니</span></div></div>
                 <div class="artist-row"><div class="artist-name">바이브</div><div class="artist-songs"><span class="song-tag">그 남자 그 여자</span></div></div>
                 <div class="artist-row"><div class="artist-name">박선주</div><div class="artist-songs"><span class="song-tag">귀로</span></div></div>
                 <div class="artist-row"><div class="artist-name">박화요비</div><div class="artist-songs"><span class="song-tag">그런 일은</span><span class="song-tag">어떤가요</span><span class="song-tag">당신과의 키스를 세어보아요</span><span class="song-tag">사랑은</span></div></div>
                 <div class="artist-row"><div class="artist-name">박정현</div><div class="artist-songs"><span class="song-tag">편지할께요</span><span class="song-tag">사랑보다 깊은 상처</span><span class="song-tag">몽중인</span></div></div>
-                <div class="artist-row"><div class="artist-name">박보람</div><div class="artist-songs"><span class="song-tag">예뻐졌다</span></div></div>
+                <div class="artist-row"><div class="artist-name">박보람</div><div class="artist-songs"><span class="song-tag">☀️ 예뻐졌다</span></div></div>
                 <div class="artist-row"><div class="artist-name">박효신</div><div class="artist-songs"><span class="song-tag">바보</span><span class="song-tag">눈의 꽃</span></div></div>
                 <div class="artist-row"><div class="artist-name">백예린</div><div class="artist-songs"><span class="song-tag">Square</span><span class="song-tag">그건 아마 우리의 잘못은 아닐 거야</span><span class="song-tag">한계</span></div></div>
                 <div class="artist-row"><div class="artist-name">박정은</div><div class="artist-songs"><span class="song-tag">U Just</span><span class="song-tag">다시 사랑할 수 있을까</span></div></div>
                 <div class="artist-row"><div class="artist-name">벤</div><div class="artist-songs"><span class="song-tag">열애중</span><span class="song-tag">꿈처럼</span><span class="song-tag">오늘은 가지마</span></div></div>
                 <div class="artist-row"><div class="artist-name">박기영</div><div class="artist-songs"><span class="song-tag">마지막 사랑</span><span class="song-tag">Butterfly</span><span class="song-tag">시작</span></div></div>
                 <div class="artist-row"><div class="artist-name">보보</div><div class="artist-songs"><span class="song-tag">늦은 후회</span></div></div>
-                <div class="artist-row"><div class="artist-name">별</div><div class="artist-songs"><span class="song-tag">12월 32일</span><span class="song-tag">I Think I</span><span class="song-tag">오후</span></div></div>
+                <div class="artist-row"><div class="artist-name">별</div><div class="artist-songs"><span class="song-tag">☀️ 12월 32일</span><span class="song-tag">I Think I</span><span class="song-tag">오후</span></div></div>
                 <div class="artist-row"><div class="artist-name">스페이스A</div><div class="artist-songs"><span class="song-tag">섹시한 남자</span><span class="song-tag">Again</span></div></div>
                 <div class="artist-row"><div class="artist-name">심규선</div><div class="artist-songs"><span class="song-tag">부디</span><span class="song-tag">화조도</span></div></div>
                 <div class="artist-row"><div class="artist-name">손디아</div><div class="artist-songs"><span class="song-tag">어른</span></div></div>
                 <div class="artist-row"><div class="artist-name">신효범</div><div class="artist-songs"><span class="song-tag">난 널 사랑해</span></div></div>
-                <div class="artist-row"><div class="artist-name">세정</div><div class="artist-songs"><span class="song-tag">꽃길</span></div></div>
+                <div class="artist-row"><div class="artist-name">세정</div><div class="artist-songs"><span class="song-tag">☀️ 꽃길</span></div></div>
                 <div class="artist-row"><div class="artist-name">서영은</div><div class="artist-songs"><span class="song-tag">너에게로 또다시</span></div></div>
                 <div class="artist-row"><div class="artist-name">성시경</div><div class="artist-songs"><span class="song-tag">너의 모든 순간</span><span class="song-tag">좋을 텐데</span><span class="song-tag">그대네요</span><span class="song-tag">잊지 말기로 해</span></div></div>
                 <div class="artist-row"><div class="artist-name">이지연</div><div class="artist-songs"><span class="song-tag">바람아 멈추어 다오</span></div></div>
-                <div class="artist-row"><div class="artist-name">아이유</div><div class="artist-songs"><span class="song-tag">잔소리</span><span class="song-tag">밤편지</span><span class="song-tag">마음을 드려요</span><span class="song-tag">너의 의미</span><span class="song-tag">금요일에 만나요</span><span class="song-tag">나의 옛날 이야기</span><span class="song-tag">나만 몰랐던 이야기</span><span class="song-tag">봄 사랑 벚꽃 말고</span><span class="song-tag">첫 이별 그날 밤</span><span class="song-tag">그대네요</span><span class="song-tag">있잖아</span></div></div>
+                <div class="artist-row"><div class="artist-name">아이유</div><div class="artist-songs"><span class="song-tag">☀️ 잔소리</span><span class="song-tag">밤편지</span><span class="song-tag">마음을 드려요</span><span class="song-tag">☀️ 너의 의미</span><span class="song-tag">☀️ 금요일에 만나요</span><span class="song-tag">나의 옛날 이야기</span><span class="song-tag">나만 몰랐던 이야기</span><span class="song-tag">☀️ 봄 사랑 벚꽃 말고</span><span class="song-tag">첫 이별 그날 밤</span><span class="song-tag">그대네요</span><span class="song-tag">있잖아</span></div></div>
                 <div class="artist-row"><div class="artist-name">안예은</div><div class="artist-songs"><span class="song-tag">상사화</span></div></div>
                 <div class="artist-row"><div class="artist-name">어반자카파</div><div class="artist-songs"><span class="song-tag">널 사랑하지 않아</span></div></div>
-                <div class="artist-row"><div class="artist-name">어쿠스틱콜라보</div><div class="artist-songs"><span class="song-tag">묘해, 너와</span><span class="song-tag">너무 보고싶어</span></div></div>
+                <div class="artist-row"><div class="artist-name">어쿠스틱콜라보</div><div class="artist-songs"><span class="song-tag">☀️ 묘해, 너와</span><span class="song-tag">너무 보고싶어</span></div></div>
                 <div class="artist-row"><div class="artist-name">양희은</div><div class="artist-songs"><span class="song-tag">사랑 그 쓸쓸함에 대하여</span></div></div>
                 <div class="artist-row"><div class="artist-name">오현란</div><div class="artist-songs"><span class="song-tag">조금만 사랑했다면</span><span class="song-tag">원</span><span class="song-tag">나 때문이죠</span></div></div>
                 <div class="artist-row"><div class="artist-name">유성은</div><div class="artist-songs"><span class="song-tag">이대로 멈춰</span></div></div>
@@ -452,16 +469,16 @@
                 <div class="artist-row"><div class="artist-name">이선희</div><div class="artist-songs"><span class="song-tag">추억의 책장을 넘기면</span><span class="song-tag">나 항상 그대를</span></div></div>
                 <div class="artist-row"><div class="artist-name">에코</div><div class="artist-songs"><span class="song-tag">행복한 나를</span></div></div>
                 <div class="artist-row"><div class="artist-name">이승철</div><div class="artist-songs"><span class="song-tag">서쪽 하늘</span></div></div>
-                <div class="artist-row"><div class="artist-name">인순이</div><div class="artist-songs"><span class="song-tag">거위의 꿈</span><span class="song-tag">아버지</span><span class="song-tag">밤이면 밤마다</span></div></div>
+                <div class="artist-row"><div class="artist-name">인순이</div><div class="artist-songs"><span class="song-tag">🌈 거위의 꿈</span><span class="song-tag">아버지</span><span class="song-tag">밤이면 밤마다</span></div></div>
                 <div class="artist-row"><div class="artist-name">임정희</div><div class="artist-songs"><span class="song-tag">눈물이 안 났어</span></div></div>
                 <div class="artist-row"><div class="artist-name">임지성</div><div class="artist-songs"><span class="song-tag">왜그래</span></div></div>
-                <div class="artist-row"><div class="artist-name">전인권</div><div class="artist-songs"><span class="song-tag">걱정 말아요 그대</span><span class="song-tag">그것만이 내 세상</span></div></div>
+                <div class="artist-row"><div class="artist-name">전인권</div><div class="artist-songs"><span class="song-tag">🌈 걱정 말아요 그대</span><span class="song-tag">🌈 그것만이 내 세상</span></div></div>
                 <div class="artist-row"><div class="artist-name">지영선</div><div class="artist-songs"><span class="song-tag">가슴앓이</span></div></div>
                 <div class="artist-row"><div class="artist-name">잔나비</div><div class="artist-songs"><span class="song-tag">주저하는 연인들을 위한</span></div></div>
                 <div class="artist-row"><div class="artist-name">장혜진</div><div class="artist-songs"><span class="song-tag">1994년 어느 늦은 밤</span></div></div>
                 <div class="artist-row"><div class="artist-name">정인</div><div class="artist-songs"><span class="song-tag">미워요</span><span class="song-tag">사랑은</span></div></div>
                 <div class="artist-row"><div class="artist-name">제이</div><div class="artist-songs"><span class="song-tag">어제처럼</span></div></div>
-                <div class="artist-row"><div class="artist-name">장윤정</div><div class="artist-songs"><span class="song-tag">이따이따요</span><span class="song-tag">꽃</span><span class="song-tag">초혼</span></div></div>
+                <div class="artist-row"><div class="artist-name">장윤정</div><div class="artist-songs"><span class="song-tag">☀️ 이따이따요</span><span class="song-tag">☀️ 꽃</span><span class="song-tag">초혼</span></div></div>
                 <div class="artist-row"><div class="artist-name">조수미</div><div class="artist-songs"><span class="song-tag">나 가거든</span></div></div>
                 <div class="artist-row"><div class="artist-name">조원선</div><div class="artist-songs"><span class="song-tag">아무도 아무것도</span></div></div>
                 <div class="artist-row"><div class="artist-name">주영훈</div><div class="artist-songs"><span class="song-tag">우리 사랑 이대로</span></div></div>
@@ -472,7 +489,7 @@
                 <div class="artist-row"><div class="artist-name">펀치</div><div class="artist-songs"><span class="song-tag">안녕 내 전부였던 너</span></div></div>
                 <div class="artist-row"><div class="artist-name">헤이즈</div><div class="artist-songs"><span class="song-tag">비도 오고 그래서</span></div></div>
                 <div class="artist-row"><div class="artist-name">한영애</div><div class="artist-songs"><span class="song-tag">누구 없소</span></div></div>
-                <div class="artist-row"><div class="artist-name">황가람</div><div class="artist-songs"><span class="song-tag">나는 반딧불</span></div></div>
+                <div class="artist-row"><div class="artist-name">황가람</div><div class="artist-songs"><span class="song-tag">🌈 나는 반딧불</span></div></div>
                 <div class="artist-row"><div class="artist-name">화사</div><div class="artist-songs"><span class="song-tag">Good Goodbye</span></div></div>
             </div>
         </section>
@@ -491,26 +508,26 @@
                 <div class="artist-row"><div class="artist-name">Adele<small>아델</small></div><div class="artist-songs"><span class="song-tag">Someone Like You</span><span class="song-tag">Rolling in the Deep</span><span class="song-tag">Hello</span></div></div>
                 <div class="artist-row"><div class="artist-name">Celine Dion<small>셀린 디온</small></div><div class="artist-songs"><span class="song-tag">My Heart Will Go On</span><span class="song-tag">Beauty and the Beast (미녀와 야수 OST)</span></div></div>
                 <div class="artist-row"><div class="artist-name">H.E.R.<small>에이치이알</small></div><div class="artist-songs"><span class="song-tag">Best Part</span></div></div>
-                <div class="artist-row"><div class="artist-name">HONNE<small>혼</small></div><div class="artist-songs"><span class="song-tag">Warm On A Cold Night</span></div></div>
+                <div class="artist-row"><div class="artist-name">HONNE<small>혼</small></div><div class="artist-songs"><span class="song-tag">☀️ Warm On A Cold Night</span></div></div>
                 <div class="artist-row"><div class="artist-name">Lady Gaga<small>레이디 가가</small></div><div class="artist-songs"><span class="song-tag">Shallow</span><span class="song-tag">Always Remember Us This Way</span><span class="song-tag">I'll Never Love Again</span></div></div>
                 <div class="artist-row"><div class="artist-name">Mandy Moore<small>맨디 무어</small></div><div class="artist-songs"><span class="song-tag">Only Hope</span></div></div>
-                <div class="artist-row"><div class="artist-name">Anne-Marie<small>앤마리</small></div><div class="artist-songs"><span class="song-tag">2002</span></div></div>
-                <div class="artist-row"><div class="artist-name">Joss Stone<small>조스 스톤</small></div><div class="artist-songs"><span class="song-tag">L-O-V-E</span></div></div>
+                <div class="artist-row"><div class="artist-name">Anne-Marie<small>앤마리</small></div><div class="artist-songs"><span class="song-tag">☀️ 2002</span></div></div>
+                <div class="artist-row"><div class="artist-name">Joss Stone<small>조스 스톤</small></div><div class="artist-songs"><span class="song-tag">☀️ L-O-V-E</span></div></div>
                 <div class="artist-row"><div class="artist-name">Duffy<small>더피</small></div><div class="artist-songs"><span class="song-tag">Mercy</span></div></div>
                 <div class="artist-row"><div class="artist-name">Whitney Houston<small>휘트니 휴스턴</small></div><div class="artist-songs"><span class="song-tag">I Have Nothing</span><span class="song-tag">I Will Always Love You</span><span class="song-tag">Greatest Love of All</span><span class="song-tag">When You Believe</span></div></div>
-                <div class="artist-row"><div class="artist-name">Mariah Carey<small>머라이어 캐리</small></div><div class="artist-songs"><span class="song-tag">Hero</span><span class="song-tag">My All</span><span class="song-tag">I'll Be There</span><span class="song-tag">Endless Love (feat. Luther Vandross)</span><span class="song-tag">All I Want for Christmas Is You</span><span class="song-tag">Without You</span></div></div>
+                <div class="artist-row"><div class="artist-name">Mariah Carey<small>머라이어 캐리</small></div><div class="artist-songs"><span class="song-tag">Hero</span><span class="song-tag">My All</span><span class="song-tag">I'll Be There</span><span class="song-tag">Endless Love (feat. Luther Vandross)</span><span class="song-tag">☀️ All I Want for Christmas Is You</span><span class="song-tag">Without You</span></div></div>
                 <div class="artist-row"><div class="artist-name">Corinne Bailey Rae<small>코린 베일리 레이</small></div><div class="artist-songs"><span class="song-tag">Like a Star</span></div></div>
-                <div class="artist-row"><div class="artist-name">인어공주 OST</div><div class="artist-songs"><span class="song-tag">Part of Your World</span></div></div>
+                <div class="artist-row"><div class="artist-name">인어공주 OST</div><div class="artist-songs"><span class="song-tag">☀️ Part of Your World</span></div></div>
                 <div class="artist-row"><div class="artist-name">Sam Smith<small>샘 스미스</small></div><div class="artist-songs"><span class="song-tag">I'm Not the Only One</span></div></div>
-                <div class="artist-row"><div class="artist-name">물랑루즈 OST</div><div class="artist-songs"><span class="song-tag">Lady Marmalade</span></div></div>
-                <div class="artist-row"><div class="artist-name">Christina Aguilera<small>크리스티나 아길레라</small></div><div class="artist-songs"><span class="song-tag">Reflection</span><span class="song-tag">Come On Over (All I Want Is You)</span><span class="song-tag">Beautiful</span><span class="song-tag">Save Me from Myself</span><span class="song-tag">I Turn to You</span><span class="song-tag">What a Girl Wants</span></div></div>
-                <div class="artist-row"><div class="artist-name">Beyoncé<small>비욘세</small></div><div class="artist-songs"><span class="song-tag">Halo</span><span class="song-tag">If I Were a Boy</span><span class="song-tag">Honesty</span><span class="song-tag">One Night Only</span></div></div>
-                <div class="artist-row"><div class="artist-name">Sia<small>시아</small></div><div class="artist-songs"><span class="song-tag">Chandelier</span><span class="song-tag">Titanium (feat. David Guetta)</span></div></div>
+                <div class="artist-row"><div class="artist-name">물랑루즈 OST</div><div class="artist-songs"><span class="song-tag">☀️ Lady Marmalade</span></div></div>
+                <div class="artist-row"><div class="artist-name">Christina Aguilera<small>크리스티나 아길레라</small></div><div class="artist-songs"><span class="song-tag">Reflection</span><span class="song-tag">☀️ Come On Over (All I Want Is You)</span><span class="song-tag">Beautiful</span><span class="song-tag">Save Me from Myself</span><span class="song-tag">I Turn to You</span><span class="song-tag">☀️ What a Girl Wants</span></div></div>
+                <div class="artist-row"><div class="artist-name">Beyoncé<small>비욘세</small></div><div class="artist-songs"><span class="song-tag">🌈 Halo</span><span class="song-tag">If I Were a Boy</span><span class="song-tag">Honesty</span><span class="song-tag">One Night Only</span></div></div>
+                <div class="artist-row"><div class="artist-name">Sia<small>시아</small></div><div class="artist-songs"><span class="song-tag">Chandelier</span><span class="song-tag">🌈 Titanium (feat. David Guetta)</span></div></div>
                 <div class="artist-row"><div class="artist-name">Idina Menzel<small>이디나 멘젤</small></div><div class="artist-songs"><span class="song-tag">Let It Go (겨울왕국 OST)</span></div></div>
                 <div class="artist-row"><div class="artist-name">Kelly Clarkson<small>켈리 클락슨</small></div><div class="artist-songs"><span class="song-tag">Because of You</span></div></div>
                 <div class="artist-row"><div class="artist-name">겨울왕국 OST</div><div class="artist-songs"><span class="song-tag">Do You Want to Build a Snowman?</span></div></div>
                 <div class="artist-row"><div class="artist-name">Naomi Scott<small>나오미 스콧</small></div><div class="artist-songs"><span class="song-tag">Speechless (알라딘 OST)</span></div></div>
-                <div class="artist-row"><div class="artist-name">Mena Massoud &amp; Naomi Scott<small>메나 마수드 &amp; 나오미 스콧</small></div><div class="artist-songs"><span class="song-tag">A Whole New World</span></div></div>
+                <div class="artist-row"><div class="artist-name">Mena Massoud &amp; Naomi Scott<small>메나 마수드 &amp; 나오미 스콧</small></div><div class="artist-songs"><span class="song-tag">☀️ A Whole New World</span></div></div>
                 <div class="artist-row"><div class="artist-name">Tamia<small>타미아</small></div><div class="artist-songs"><span class="song-tag">Officially Missing You</span></div></div>
             </div>
         </section>
