@@ -9,203 +9,100 @@
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#FBF6EF;
-    --ink:#332B33;
-    --ink-soft:#6b6068;
-    --rose:#E68AA4;
-    --rose-deep:#CF6A86;
-    --rose-tint:#FCE7ED;
-    --amber:#CC9248;
-    --amber-deep:#B27628;
-    --amber-tint:#F6E9D5;
-    --night:#2F2C47;
-    --night-2:#43406b;
+    --paper:#FBF6EF; --ink:#332B33; --ink-soft:#6b6068;
+    --rose:#E68AA4; --rose-deep:#CF6A86; --rose-tint:#FCE7ED;
+    --amber:#CC9248; --amber-deep:#B27628; --amber-tint:#F6E9D5;
     --line:#e7ddd2;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:#ece4da;
-    color:var(--ink);
-    font-family:"Gowun Dodum",sans-serif;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  .toon{
-    max-width:520px;
-    margin:0 auto;
-    background:var(--paper);
+  body{margin:0;background:#ece4da;color:var(--ink);
+    font-family:"Gowun Dodum",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  .toon{max-width:520px;margin:0 auto;background:var(--paper);
     background-image:radial-gradient(circle at 12% 8%, rgba(230,138,164,.05), transparent 40%),
                      radial-gradient(circle at 88% 30%, rgba(204,146,72,.05), transparent 40%);
-    box-shadow:0 0 60px rgba(0,0,0,.12);
-    overflow:hidden;
-  }
+    box-shadow:0 0 60px rgba(0,0,0,.12);overflow:hidden;}
 
   /* ---------- COVER ---------- */
-  .cover{
-    position:relative;
-    padding:64px 28px 56px;
-    text-align:center;
-    background:
-      linear-gradient(180deg,#FFFDFB 0%, #FDEFF1 55%, #FBF6EF 100%);
-    overflow:hidden;
-  }
-  .cover .season{
-    font-family:"Gaegu",cursive;
-    font-size:18px;
-    color:var(--rose-deep);
-    letter-spacing:.04em;
-    margin-bottom:6px;
-  }
-  .cover h1{
-    font-family:"Black Han Sans",sans-serif;
-    font-weight:400;
-    font-size:46px;
-    line-height:1.15;
-    margin:6px 0 14px;
-    color:var(--ink);
-    letter-spacing:-.01em;
-  }
+  .cover{position:relative;padding:64px 28px 54px;text-align:center;
+    background:linear-gradient(180deg,#FFFDFB 0%, #FDEFF1 55%, #FBF6EF 100%);overflow:hidden;}
+  .cover .season{font-family:"Gaegu",cursive;font-size:18px;color:var(--rose-deep);letter-spacing:.04em;margin-bottom:6px;}
+  .cover h1{font-family:"Black Han Sans",sans-serif;font-weight:400;font-size:46px;line-height:1.15;
+    margin:6px 0 14px;color:var(--ink);letter-spacing:-.01em;}
   .cover h1 .hl{color:var(--rose-deep);}
-  .cover .sub{
-    font-family:"Gaegu",cursive;
-    font-size:19px;
-    color:var(--ink-soft);
-  }
-  .cover .duo{
-    display:flex;justify-content:center;align-items:flex-end;gap:10px;
-    margin:30px 0 18px;
-  }
-  .cover .av{width:118px;height:118px;}
-  .cover .av.small{width:96px;height:96px;margin-bottom:8px;}
-  .cover .tagline{
-    font-family:"Gaegu",cursive;
-    font-size:20px;
-    color:var(--amber-deep);
-    background:#fff;
-    display:inline-block;
-    padding:8px 18px;
-    border-radius:22px 22px 22px 4px;
-    box-shadow:0 4px 0 rgba(204,146,72,.18);
-    margin-top:8px;
-  }
-  .cover .meta{
-    margin-top:26px;font-size:13px;color:var(--ink-soft);letter-spacing:.02em;
-  }
-  .blossom-rain span{
-    position:absolute;top:-20px;font-size:16px;opacity:.55;
-    animation:fall linear infinite;
-  }
-  @keyframes fall{
-    to{transform:translateY(360px) rotate(220deg);opacity:0;}
-  }
+  .cover .sub{font-family:"Gaegu",cursive;font-size:19px;color:var(--ink-soft);}
+  .cover .duo{display:flex;justify-content:center;align-items:flex-end;gap:6px;margin:26px 0 16px;}
+  .cover .av{width:118px;height:138px;}
+  .cover .av.small{width:98px;height:114px;margin-bottom:6px;}
+  .cover .tagline{font-family:"Gaegu",cursive;font-size:20px;color:var(--amber-deep);background:#fff;
+    display:inline-block;padding:8px 18px;border-radius:22px 22px 22px 4px;
+    box-shadow:0 4px 0 rgba(204,146,72,.18);margin-top:6px;}
+  .cover .meta{margin-top:24px;font-size:13px;color:var(--ink-soft);letter-spacing:.02em;}
+  .blossom-rain span{position:absolute;top:-20px;font-size:16px;opacity:.55;animation:fall linear infinite;}
+  @keyframes fall{to{transform:translateY(380px) rotate(220deg);opacity:0;}}
 
   /* ---------- EPISODE ---------- */
   .episode{padding:14px 0 6px;}
-  .ep-head{
-    display:flex;align-items:baseline;gap:12px;
-    padding:30px 26px 12px;
-  }
-  .ep-num{
-    font-family:"Black Han Sans",sans-serif;
-    font-size:34px;line-height:1;color:var(--rose);
-    flex:none;
-  }
-  .ep-title{
-    font-family:"Gaegu",cursive;font-weight:700;
-    font-size:25px;color:var(--ink);
-  }
+  .ep-head{display:flex;align-items:baseline;gap:12px;padding:30px 26px 12px;}
+  .ep-num{font-family:"Black Han Sans",sans-serif;font-size:34px;line-height:1;color:var(--rose);flex:none;}
+  .ep-title{font-family:"Gaegu",cursive;font-weight:700;font-size:25px;color:var(--ink);}
   .ep-rule{height:3px;margin:0 26px 8px;border-radius:3px;
     background:linear-gradient(90deg,var(--rose) 0%, var(--amber) 100%);opacity:.55;}
 
   /* ---------- NARRATION ---------- */
-  .narr{
-    font-family:"Gowun Dodum",sans-serif;
-    font-size:15.5px;color:var(--ink-soft);
-    text-align:center;
-    padding:18px 34px;
-    letter-spacing:.01em;
-  }
+  .narr{font-family:"Gowun Dodum",sans-serif;font-size:15.5px;color:var(--ink-soft);
+    text-align:center;padding:18px 34px;letter-spacing:.01em;}
   .narr.em{color:var(--ink);font-size:16.5px;}
   .narr .small{display:block;font-size:13px;margin-top:4px;color:#a89ca2;}
 
-  /* ---------- PANEL / SCENE ---------- */
-  .panel{
-    position:relative;
-    margin:10px 16px;
-    border-radius:18px;
-    padding:22px 18px 24px;
-    overflow:hidden;
-    border:1px solid rgba(0,0,0,.04);
-  }
+  /* ---------- PANEL ---------- */
+  .panel{position:relative;margin:10px 16px;border-radius:18px;padding:22px 18px 24px;
+    overflow:hidden;border:1px solid rgba(0,0,0,.04);}
   .panel.day{background:linear-gradient(160deg,#FFF7EE,#FDEAD7);}
-  .panel.sea{background:linear-gradient(165deg,#BFE3F0,#7FC3DE 60%,#5FAecf);}
+  .panel.sea{background:linear-gradient(165deg,#BFE3F0,#7FC3DE 60%,#5FAECF);}
   .panel.night{background:linear-gradient(165deg,#3a3760,#2b2945);}
   .panel.warm{background:linear-gradient(160deg,#FDEFE2,#F8DCC6);}
   .panel.rain{background:linear-gradient(165deg,#9FB0BD,#6F8392);}
   .panel.soft{background:linear-gradient(160deg,#FCE9EE,#F8D7E0);}
   .panel.dusk{background:linear-gradient(165deg,#F7C9B6,#E89CB0 60%,#9b7bb0);}
+  .panel.studio{background:linear-gradient(160deg,#EBE6FB,#D7CFF0);}
+  .panel.wine{background:linear-gradient(160deg,#F3DCE2,#D49FB1);}
 
-  .panel .scene-label{
-    position:absolute;top:10px;right:14px;
-    font-family:"Gaegu",cursive;font-size:13px;
-    color:rgba(0,0,0,.28);
-  }
-  .panel.night .scene-label,.panel.sea .scene-label,.panel.rain .scene-label,.panel.dusk .scene-label{color:rgba(255,255,255,.55);}
+  .panel .scene-label{position:absolute;top:10px;right:14px;font-family:"Gaegu",cursive;font-size:13px;color:rgba(0,0,0,.28);}
+  .panel.night .scene-label,.panel.sea .scene-label,.panel.rain .scene-label,.panel.dusk .scene-label,.panel.wine .scene-label{color:rgba(255,255,255,.6);}
 
-  .stage{display:flex;align-items:flex-end;justify-content:center;gap:6px;min-height:96px;margin-top:6px;}
-  .stage .av{width:84px;height:84px;flex:none;}
+  .stage{display:flex;align-items:flex-end;justify-content:center;gap:4px;min-height:96px;margin-top:6px;}
+  .stage .av{width:84px;height:98px;flex:none;}
   .stage.solo{justify-content:center;}
 
-  /* speech bubbles */
   .bubbles{margin-top:14px;display:flex;flex-direction:column;gap:9px;}
-  .bubble{
-    position:relative;max-width:82%;padding:10px 14px;border-radius:16px;
-    font-size:15px;line-height:1.5;
-    box-shadow:0 2px 6px rgba(0,0,0,.07);
-    word-break:keep-all;
-  }
-  .bubble .who{
-    display:block;font-family:"Gaegu",cursive;font-size:12px;
-    margin-bottom:1px;opacity:.7;font-weight:700;
-  }
+  .bubble{position:relative;max-width:82%;padding:10px 14px;border-radius:16px;font-size:15px;line-height:1.5;
+    box-shadow:0 2px 6px rgba(0,0,0,.07);word-break:keep-all;}
+  .bubble .who{display:block;font-family:"Gaegu",cursive;font-size:12px;margin-bottom:1px;opacity:.7;font-weight:700;}
   .bubble.j{align-self:flex-start;background:var(--rose-tint);color:#7d3a4d;border-bottom-left-radius:4px;}
   .bubble.j .who{color:var(--rose-deep);}
   .bubble.o{align-self:flex-end;background:#fff;color:#5b4a2c;border-bottom-right-radius:4px;}
   .bubble.o .who{color:var(--amber-deep);}
   .panel.night .bubble.o{background:#efe9ff;color:#3c3556;}
-  .panel.sea .bubble.o,.panel.rain .bubble.o,.panel.dusk .bubble.o{background:#fffefb;}
+  .panel.sea .bubble.o,.panel.rain .bubble.o,.panel.dusk .bubble.o,.panel.wine .bubble.o{background:#fffefb;}
+  .gift{align-self:center;background:linear-gradient(90deg,var(--amber-tint),#fff);border:1px dashed var(--amber);
+    color:var(--amber-deep);font-family:"Gaegu",cursive;font-size:14px;border-radius:14px;padding:8px 16px;box-shadow:none;}
 
-  .gift{
-    align-self:center;background:linear-gradient(90deg,var(--amber-tint),#fff);
-    border:1px dashed var(--amber);color:var(--amber-deep);
-    font-family:"Gaegu",cursive;font-size:14px;border-radius:14px;
-    padding:8px 16px;box-shadow:none;
-  }
-
-  /* scenery deco */
   .moon{position:absolute;top:18px;left:22px;width:42px;height:42px;border-radius:50%;
     background:#fdf3d6;box-shadow:0 0 24px rgba(253,243,214,.7);}
-  .star{position:absolute;color:#fff;font-size:11px;opacity:.8;}
+  .star{position:absolute;color:#fff;font-size:11px;opacity:.85;}
   .wave{position:absolute;left:0;right:0;bottom:0;height:34px;
-    background:radial-gradient(circle at 20% 0,transparent 12px,#cdeaf3 13px) repeat-x;
-    background-size:42px 34px;opacity:.5;}
-  .raindrop{position:absolute;width:2px;height:13px;background:rgba(255,255,255,.55);border-radius:2px;
-    animation:drop .8s linear infinite;}
+    background:radial-gradient(circle at 20% 0,transparent 12px,#cdeaf3 13px) repeat-x;background-size:42px 34px;opacity:.5;}
+  .raindrop{position:absolute;width:2px;height:13px;background:rgba(255,255,255,.55);border-radius:2px;animation:drop .8s linear infinite;}
   @keyframes drop{from{transform:translateY(-16px);}to{transform:translateY(140px);opacity:0;}}
 
-  /* reveal */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease;}
   .reveal.in{opacity:1;transform:none;}
 
   /* ---------- EPILOGUE ---------- */
-  .epi{
-    padding:46px 30px 60px;text-align:center;
-    background:linear-gradient(180deg,#FBF6EF, #FBEFE6 70%, #F7E0D6);
-  }
-  .epi .duo{display:flex;justify-content:center;align-items:flex-end;gap:8px;margin:20px 0 14px;}
-  .epi .av{width:96px;height:96px;}
+  .epi{padding:46px 30px 60px;text-align:center;background:linear-gradient(180deg,#FBF6EF, #FBEFE6 70%, #F7E0D6);}
+  .epi .duo{display:flex;justify-content:center;align-items:flex-end;gap:4px;margin:20px 0 14px;}
+  .epi .av{width:100px;height:117px;}
   .epi h2{font-family:"Gaegu",cursive;font-size:26px;color:var(--rose-deep);margin:0 0 10px;}
   .epi p{font-size:15.5px;color:var(--ink-soft);margin:6px 0;}
   .epi .quote{font-family:"Gaegu",cursive;font-size:21px;color:var(--amber-deep);margin-top:18px;line-height:1.4;}
@@ -216,53 +113,74 @@
     .reveal{opacity:1;transform:none;transition:none;}
     .blossom-rain span,.raindrop{animation:none;display:none;}
   }
-  @media (max-width:430px){
-    .cover h1{font-size:38px;}
-    .bubble{max-width:88%;}
-  }
+  @media (max-width:430px){ .cover h1{font-size:38px;} .bubble{max-width:88%;} }
 </style>
 </head>
 <body>
 
-<!-- shared avatars -->
+<!-- shared avatars (stylized, idealized illustrations) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="jiae" viewBox="0 0 100 100">
-      <path d="M21 40 Q50 4 79 40 L82 90 Q50 100 18 90 Z" fill="#3a2f3a"/>
-      <circle cx="50" cy="51" r="25" fill="#f7d8c2"/>
-      <path d="M23 36 Q19 64 25 90 L34 90 Q29 60 33 40 Z" fill="#332940"/>
-      <path d="M77 36 Q81 64 75 90 L66 90 Q71 60 67 40 Z" fill="#332940"/>
-      <path d="M26 39 Q50 19 74 39 Q66 28 50 27 Q34 28 26 39 Z" fill="#3a2f3a"/>
-      <circle cx="41" cy="51" r="2.6" fill="#33293a"/>
-      <circle cx="59" cy="51" r="2.6" fill="#33293a"/>
-      <circle cx="37" cy="59" r="3.6" fill="#f3aebd" opacity=".6"/>
-      <circle cx="63" cy="59" r="3.6" fill="#f3aebd" opacity=".6"/>
-      <path d="M44 61 Q50 66 56 61" stroke="#c97a86" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <g transform="translate(70,22)">
-        <circle r="3.4" fill="#fff"/>
-        <g fill="#f4a0b6">
-          <circle cx="0" cy="-4.4" r="3.1"/><circle cx="4.2" cy="-1.4" r="3.1"/>
-          <circle cx="2.6" cy="3.6" r="3.1"/><circle cx="-2.6" cy="3.6" r="3.1"/>
-          <circle cx="-4.2" cy="-1.4" r="3.1"/>
-        </g>
-        <circle r="2" fill="#f7d35f"/>
+    <linearGradient id="jSkin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe3d2"/><stop offset="1" stop-color="#f5d0ba"/></linearGradient>
+    <linearGradient id="jHair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3340"/><stop offset="1" stop-color="#2c1e2c"/></linearGradient>
+    <linearGradient id="jHairBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2632"/><stop offset="1" stop-color="#241823"/></linearGradient>
+    <linearGradient id="oSkin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2d0b6"/><stop offset="1" stop-color="#e6bb99"/></linearGradient>
+    <linearGradient id="oHair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#332a25"/><stop offset="1" stop-color="#1e1815"/></linearGradient>
+    <linearGradient id="oSuit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3c4350"/><stop offset="1" stop-color="#2a3039"/></linearGradient>
+
+    <symbol id="jiae" viewBox="0 0 120 140">
+      <path d="M27 54 Q22 16 60 12 Q98 16 93 54 L99 130 Q93 140 79 135 Q73 98 75 70 L45 70 Q47 98 41 135 Q27 140 21 130 Z" fill="url(#jHairBack)"/>
+      <path d="M30 140 Q34 112 50 106 L70 106 Q86 112 90 140 Z" fill="#f3dde6"/>
+      <path d="M50 106 Q60 117 70 106 L70 113 Q60 123 50 113 Z" fill="#e6c6d3"/>
+      <path d="M53 96 L53 112 Q60 120 67 112 L67 96 Z" fill="#f1cbb6"/>
+      <path d="M38 64 Q38 96 60 100 Q82 96 82 64 Q82 39 60 39 Q38 39 38 64 Z" fill="url(#jSkin)"/>
+      <circle cx="38" cy="70" r="4" fill="url(#jSkin)"/><circle cx="82" cy="70" r="4" fill="url(#jSkin)"/>
+      <circle cx="38" cy="77" r="1.9" fill="#e7a6bc"/><circle cx="82" cy="77" r="1.9" fill="#e7a6bc"/>
+      <path d="M36 60 Q33 28 60 24 Q87 28 84 60 Q79 43 60 41 Q57 51 51 55 Q44 50 44 43 Q40 50 36 60 Z" fill="url(#jHair)"/>
+      <path d="M44 60 Q50 56.5 56 59.5" stroke="#5a4150" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+      <path d="M64 59.5 Q70 56.5 76 60" stroke="#5a4150" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+      <path d="M45 67 Q50 63 55 67 Q50 71 45 67 Z" fill="#fff"/>
+      <circle cx="50" cy="67" r="2.7" fill="#5b4334"/><circle cx="51" cy="66" r=".9" fill="#fff"/>
+      <path d="M44.5 66.5 Q50 62 55.5 66.5" stroke="#3f2e3a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+      <path d="M65 67 Q70 63 75 67 Q70 71 65 67 Z" fill="#fff"/>
+      <circle cx="70" cy="67" r="2.7" fill="#5b4334"/><circle cx="71" cy="66" r=".9" fill="#fff"/>
+      <path d="M64.5 66.5 Q70 62 75.5 66.5" stroke="#3f2e3a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+      <path d="M60 70 Q61.5 76 58 78" stroke="#d9a98f" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="46" cy="78" rx="5" ry="3" fill="#f3a6bb" opacity=".5"/><ellipse cx="74" cy="78" rx="5" ry="3" fill="#f3a6bb" opacity=".5"/>
+      <path d="M54 84 Q60 82 66 84 Q60 89 54 84 Z" fill="#dd7b91"/>
+      <path d="M54 84 Q60 86 66 84" stroke="#c45f78" stroke-width=".8" fill="none"/>
+      <g transform="translate(81,41)">
+        <g fill="#f4a0b6"><circle cx="0" cy="-5" r="4"/><circle cx="5" cy="-1.5" r="4"/><circle cx="3" cy="4.5" r="4"/><circle cx="-3" cy="4.5" r="4"/><circle cx="-5" cy="-1.5" r="4"/></g>
+        <circle r="2.4" fill="#f7d35f"/>
       </g>
     </symbol>
-    <symbol id="oppa" viewBox="0 0 100 100">
-      <circle cx="50" cy="53" r="25" fill="#f0cdb2"/>
-      <g fill="#2e2723">
-        <circle cx="34" cy="31" r="11"/><circle cx="47" cy="24" r="12"/>
-        <circle cx="60" cy="25" r="11"/><circle cx="69" cy="33" r="9.5"/>
-        <circle cx="29" cy="42" r="8"/><circle cx="71" cy="44" r="8"/>
+
+    <symbol id="oppa" viewBox="0 0 120 140">
+      <path d="M26 140 Q30 110 50 104 L70 104 Q90 110 94 140 Z" fill="url(#oSuit)"/>
+      <path d="M50 104 L60 125 L70 104 Z" fill="#f4f1ec"/>
+      <path d="M50 104 L60 117 L54 123 Z" fill="#e7e3da"/><path d="M70 104 L60 117 L66 123 Z" fill="#e7e3da"/>
+      <path d="M58 117 L62 117 L63 132 L57 132 Z" fill="#7d4a52"/>
+      <path d="M53 94 L53 111 Q60 118 67 111 L67 94 Z" fill="#e3b896"/>
+      <path d="M37 62 Q37 92 60 100 Q83 92 83 62 Q83 38 60 38 Q37 38 37 62 Z" fill="url(#oSkin)"/>
+      <circle cx="37" cy="68" r="4.2" fill="url(#oSkin)"/><circle cx="83" cy="68" r="4.2" fill="url(#oSkin)"/>
+      <g fill="url(#oHair)">
+        <circle cx="42" cy="35" r="12"/><circle cx="55" cy="27" r="13"/><circle cx="68" cy="28" r="12"/>
+        <circle cx="78" cy="39" r="10"/><circle cx="33" cy="47" r="9"/><circle cx="85" cy="49" r="9"/>
+        <path d="M33 56 Q32 37 60 29 Q88 37 87 56 Q80 41 60 39 Q40 41 33 56 Z"/>
       </g>
-      <circle cx="41" cy="53" r="8.2" fill="#fff" opacity=".5"/>
-      <circle cx="59" cy="53" r="8.2" fill="#fff" opacity=".5"/>
-      <circle cx="41" cy="53" r="8.2" fill="none" stroke="#4a3b34" stroke-width="2.4"/>
-      <circle cx="59" cy="53" r="8.2" fill="none" stroke="#4a3b34" stroke-width="2.4"/>
-      <line x1="49" y1="53" x2="51" y2="53" stroke="#4a3b34" stroke-width="2.4"/>
-      <circle cx="41" cy="53" r="2.3" fill="#3a2f2a"/>
-      <circle cx="59" cy="53" r="2.3" fill="#3a2f2a"/>
-      <path d="M44 65 Q50 70 56 65" stroke="#a9776a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M43 60 Q49 57 55 59" stroke="#2f221d" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M65 59 Q71 57 77 60" stroke="#2f221d" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <circle cx="49" cy="67" r="9" fill="#fff" opacity=".16"/><circle cx="71" cy="67" r="9" fill="#fff" opacity=".16"/>
+      <circle cx="49" cy="67" r="9" fill="none" stroke="#3b2e2a" stroke-width="2.2"/>
+      <circle cx="71" cy="67" r="9" fill="none" stroke="#3b2e2a" stroke-width="2.2"/>
+      <line x1="58" y1="66" x2="62" y2="66" stroke="#3b2e2a" stroke-width="2.2"/>
+      <line x1="40" y1="64.5" x2="37" y2="62.5" stroke="#3b2e2a" stroke-width="2"/>
+      <line x1="80" y1="64.5" x2="83" y2="62.5" stroke="#3b2e2a" stroke-width="2"/>
+      <circle cx="49" cy="67" r="2.4" fill="#3a2c26"/><circle cx="50" cy="66" r=".8" fill="#fff"/>
+      <circle cx="71" cy="67" r="2.4" fill="#3a2c26"/><circle cx="72" cy="66" r=".8" fill="#fff"/>
+      <path d="M60 70 Q62 78 58 80" stroke="#cf9b80" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+      <path d="M51 86 Q60 92 69 86" stroke="#9c665a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M46 90 Q60 99 74 90 Q70 96 60 97 Q50 96 46 90 Z" fill="#c79a7f" opacity=".22"/>
     </symbol>
   </defs>
 </svg>
@@ -294,13 +212,9 @@
     <div class="ep-head"><span class="ep-num">01</span><span class="ep-title">노래를 찾아서</span></div>
     <div class="ep-rule"></div>
     <div class="narr reveal">5월의 어느 일요일.<br>한 통의 메시지로 모든 게 시작됐다.</div>
-
     <div class="panel day reveal">
       <span class="scene-label">5/17 일</span>
-      <div class="stage">
-        <svg class="av"><use href="#oppa"/></svg>
-        <svg class="av"><use href="#jiae"/></svg>
-      </div>
+      <div class="stage"><svg class="av"><use href="#oppa"/></svg><svg class="av"><use href="#jiae"/></svg></div>
       <div class="bubbles">
         <div class="bubble o"><span class="who">오빠</span>엇, 찾았다</div>
         <div class="bubble j"><span class="who">지애🌸</span>앗! 로터오빠?</div>
@@ -308,7 +222,6 @@
         <div class="bubble j"><span class="who">지애🌸</span>대박…. 오빠 너무 좋아요!!</div>
       </div>
     </div>
-
     <div class="panel day reveal">
       <div class="bubbles">
         <div class="bubble j"><span class="who">지애🌸</span>오빠 성함이 김재원이군요! ㅎㅎㅎ</div>
@@ -316,7 +229,6 @@
         <div class="bubble j"><span class="who">지애🌸</span>우아.. 오빠 멋있다…</div>
       </div>
     </div>
-
     <div class="narr em reveal">그렇게, 우리의 봄이 시작됐다.</div>
   </section>
 
@@ -325,20 +237,15 @@
     <div class="ep-head"><span class="ep-num">02</span><span class="ep-title">부산, 그리고 바다</span></div>
     <div class="ep-rule"></div>
     <div class="narr reveal">며칠 뒤, 오빠는 친구들과 부산으로 떠났다.</div>
-
     <div class="panel sea reveal">
-      <span class="scene-label">5/19 · 부산</span>
-      <div class="wave" aria-hidden="true"></div>
-      <div class="stage solo">
-        <svg class="av"><use href="#jiae"/></svg>
-      </div>
+      <span class="scene-label">5/19 · 부산</span><div class="wave" aria-hidden="true"></div>
+      <div class="stage solo"><svg class="av"><use href="#jiae"/></svg></div>
       <div class="bubbles">
         <div class="bubble j"><span class="who">지애🌸</span>오빠 바다바다 ㅠㅠ 사진사진!!</div>
         <div class="bubble o"><span class="who">오빠</span>너무 더워요… 조개구이 먹고 있어요</div>
         <div class="bubble j"><span class="who">지애🌸</span>더운데 왜 조개구이를 먹어요 ㅋㅋㅋㅋ</div>
       </div>
     </div>
-
     <div class="panel sea reveal">
       <div class="wave" aria-hidden="true"></div>
       <div class="bubbles">
@@ -346,7 +253,6 @@
         <div class="bubble j"><span class="who">지애🌸</span>오빠 노는 게 더 힘들엉요 우리 나이엔 ㅋㅋㅋㅋㅋ</div>
       </div>
     </div>
-
     <div class="narr reveal">멀리 떨어져 있어도,<br>하루의 안부는 늘 오갔다.</div>
   </section>
 
@@ -355,17 +261,10 @@
     <div class="ep-head"><span class="ep-num">03</span><span class="ep-title">키보드 대소동</span></div>
     <div class="ep-rule"></div>
     <div class="narr reveal">오빠가 키보드를 선물했다.<br>문제는… <b>연결</b>이었다.</div>
-
     <div class="panel night reveal">
-      <span class="scene-label">새벽 4시</span>
-      <div class="moon" aria-hidden="true"></div>
-      <span class="star" style="top:24px;right:40px">✦</span>
-      <span class="star" style="top:52px;right:70px">✧</span>
-      <span class="star" style="top:14px;right:96px">✦</span>
-      <div class="stage">
-        <svg class="av"><use href="#oppa"/></svg>
-        <svg class="av"><use href="#jiae"/></svg>
-      </div>
+      <span class="scene-label">새벽 4시</span><div class="moon" aria-hidden="true"></div>
+      <span class="star" style="top:24px;right:40px">✦</span><span class="star" style="top:52px;right:70px">✧</span><span class="star" style="top:14px;right:96px">✦</span>
+      <div class="stage"><svg class="av"><use href="#oppa"/></svg><svg class="av"><use href="#jiae"/></svg></div>
       <div class="bubbles">
         <div class="bubble j"><span class="who">지애🌸</span>연결이 안대요 ㅠㅠ 고전중ㅋ</div>
         <div class="bubble o"><span class="who">오빠</span>스위치를 B로, 그담에 Fn + 7 눌러요</div>
@@ -373,7 +272,6 @@
         <div class="bubble o"><span class="who">오빠</span>아니아니 USB 리시버 있죠? 그걸로 하면 쉬워요 ㅋㅋㅋ</div>
       </div>
     </div>
-
     <div class="panel night reveal">
       <div class="moon" aria-hidden="true"></div>
       <div class="bubbles">
@@ -382,30 +280,48 @@
         <div class="bubble o"><span class="who">오빠</span>자꾸 깨워서 미안~ 잘 자요 ^^</div>
       </div>
     </div>
-
     <div class="narr reveal">결국 키보드는 며칠 뒤 무사히 연결됐다.<span class="small">…아마도. (블루투스는 끝내 포기)</span></div>
   </section>
 
-  <!-- ===== EP 04 ===== -->
+  <!-- ===== EP 04 (NEW) ===== -->
   <section class="episode">
-    <div class="ep-head"><span class="ep-num">04</span><span class="ep-title">합정 맛집, 그리고 건강검진</span></div>
+    <div class="ep-head"><span class="ep-num">04</span><span class="ep-title">회장단 구함</span></div>
     <div class="ep-rule"></div>
+    <div class="narr reveal">방송이 잘 안돼서 고민이 많던 어느 날.</div>
+    <div class="panel studio reveal">
+      <span class="scene-label">고민중</span>
+      <div class="stage"><svg class="av"><use href="#jiae"/></svg><svg class="av"><use href="#oppa"/></svg></div>
+      <div class="bubbles">
+        <div class="bubble j"><span class="who">지애🌸</span>요즘 방송이 잘 안대서 고민이 많아유 ㅜㅅㅜ</div>
+        <div class="bubble o"><span class="who">오빠</span>회장단 구함… 광고라도 해야 되나 ㅎㅎ</div>
+        <div class="bubble j"><span class="who">지애🌸</span>ㅋㅋㅋㅋㅋ 그래야 대나</div>
+      </div>
+    </div>
+    <div class="panel studio reveal">
+      <div class="bubbles">
+        <div class="gift">🤖 ChatGPT 조언.txt · "할 일 밝게 하면서 기다리래요"</div>
+        <div class="bubble j"><span class="who">지애🌸</span>아 진짜 웃겨 ㅋㅋㅋ 오빠가 쓴 줄 알앗자나요</div>
+        <div class="bubble o"><span class="who">오빠</span>근데 지애님은 거의 FM처럼 방송을 잘 하고 있어서… 뭐가 문제지</div>
+        <div class="bubble j"><span class="who">지애🌸</span>뭐가 문제이이이잉 우아아앙 ㅠㅅㅠ</div>
+      </div>
+    </div>
+    <div class="narr reveal">뭐가 문제인지는 몰라도,<br>오빠는 늘 지애 편이었다.</div>
+  </section>
 
+  <!-- ===== EP 05 ===== -->
+  <section class="episode">
+    <div class="ep-head"><span class="ep-num">05</span><span class="ep-title">합정 맛집, 그리고 건강검진</span></div>
+    <div class="ep-rule"></div>
     <div class="panel warm reveal">
       <span class="scene-label">수제비 킬러</span>
-      <div class="stage">
-        <svg class="av"><use href="#jiae"/></svg>
-        <svg class="av"><use href="#oppa"/></svg>
-      </div>
+      <div class="stage"><svg class="av"><use href="#jiae"/></svg><svg class="av"><use href="#oppa"/></svg></div>
       <div class="bubbles">
         <div class="bubble j"><span class="who">지애🌸</span>나 수제비 킬러거든요! 맛집 알려죠요!</div>
         <div class="bubble o"><span class="who">오빠</span>합정역 근처에 두 군데 있어요. 단팥빵 유명한 집 옆에도 하나 ㅎㅎ</div>
         <div class="bubble j"><span class="who">지애🌸</span>오디오디!! 이거 먹으러 갈걸 그랫네…</div>
       </div>
     </div>
-
     <div class="narr reveal">그리고 며칠 뒤, 오빠의 건강검진 결과가 나왔다.</div>
-
     <div class="panel warm reveal">
       <span class="scene-label">5/26 · 병원</span>
       <div class="stage solo"><svg class="av"><use href="#oppa"/></svg></div>
@@ -416,7 +332,6 @@
         <div class="bubble j"><span class="who">지애🌸</span>아 비유 진짜 적절하다 ㅎㅎㅎㅎ</div>
       </div>
     </div>
-
     <div class="panel warm reveal">
       <div class="bubbles">
         <div class="bubble o"><span class="who">오빠</span>약 먹는 동안 술 일주일만 끊고 운동도 하고… 해야죠 ㅎㅎ</div>
@@ -425,18 +340,15 @@
     </div>
   </section>
 
-  <!-- ===== EP 05 ===== -->
+  <!-- ===== EP 06 ===== -->
   <section class="episode">
-    <div class="ep-head"><span class="ep-num">05</span><span class="ep-title">비, 그리고 노래</span></div>
+    <div class="ep-head"><span class="ep-num">06</span><span class="ep-title">비, 그리고 노래</span></div>
     <div class="ep-rule"></div>
     <div class="narr reveal">지애는 비 오는 날에도<br>강아지와 산책을 나갔다.</div>
-
     <div class="panel rain reveal">
       <span class="scene-label">또 비</span>
-      <span class="raindrop" style="left:18%"></span>
-      <span class="raindrop" style="left:38%;animation-delay:.3s"></span>
-      <span class="raindrop" style="left:58%;animation-delay:.6s"></span>
-      <span class="raindrop" style="left:78%;animation-delay:.15s"></span>
+      <span class="raindrop" style="left:18%"></span><span class="raindrop" style="left:38%;animation-delay:.3s"></span>
+      <span class="raindrop" style="left:58%;animation-delay:.6s"></span><span class="raindrop" style="left:78%;animation-delay:.15s"></span>
       <div class="stage solo"><svg class="av"><use href="#jiae"/></svg></div>
       <div class="bubbles">
         <div class="bubble j"><span class="who">지애🌸</span>오빠! 여긴 비 안 와서 산책 빠르게 하고 있어요 ㅋㅋ</div>
@@ -445,9 +357,7 @@
         <div class="bubble o"><span class="who">오빠</span>비 맞는 게 생활이구만 ㅋㅋ 얼른 씻고 마른 옷 입어요</div>
       </div>
     </div>
-
     <div class="narr reveal">그날 밤, 오빠는 노래 하나를 보내왔다.</div>
-
     <div class="panel soft reveal">
       <span class="scene-label">🎵</span>
       <div class="bubbles">
@@ -458,33 +368,77 @@
     </div>
   </section>
 
-  <!-- ===== EP 06 ===== -->
+  <!-- ===== EP 07 (NEW) ===== -->
   <section class="episode">
-    <div class="ep-head"><span class="ep-num">06</span><span class="ep-title">아프지 마</span></div>
+    <div class="ep-head"><span class="ep-num">07</span><span class="ep-title">범띠와 소띠</span></div>
+    <div class="ep-rule"></div>
+    <div class="narr reveal">친구들이 멀리서 지애를 보러 온 날.</div>
+    <div class="panel day reveal">
+      <span class="scene-label">5/25 · 합정</span>
+      <div class="stage solo"><svg class="av"><use href="#jiae"/></svg></div>
+      <div class="bubbles">
+        <div class="bubble j"><span class="who">지애🌸</span>친구들이 나 보러 온 거여가지구 ㅎㅎ 서비스 학실히!</div>
+        <div class="bubble j"><span class="who">지애🌸</span>근데 거기 우리 엄마가 계셔가지구 ㅋㅋ</div>
+        <div class="bubble o"><span class="who">오빠</span>친구인데 엄마인 거예요?? 목동 8학군인데… 초등학교 다니세요?</div>
+        <div class="bubble j"><span class="who">지애🌸</span>ㅡ_ㅡ 개그 친 거죠 오빠 ㅋㅋㅋ</div>
+      </div>
+    </div>
+    <div class="panel day reveal">
+      <span class="scene-label">띠 궁합?</span>
+      <div class="stage"><svg class="av"><use href="#oppa"/></svg><svg class="av"><use href="#jiae"/></svg></div>
+      <div class="bubbles">
+        <div class="bubble j"><span class="who">지애🌸</span>오빠 나랑 띠동갑이엇어? 범띠??</div>
+        <div class="bubble o"><span class="who">오빠</span>응 74년 범띠야. 범하고 소가 궁합이 그렇게 잘 맞는다던데…</div>
+        <div class="bubble j"><span class="who">지애🌸</span>ㅎㅎㅎㅎㅎㅎ</div>
+        <div class="bubble o"><span class="who">오빠</span><i>(쉬지 않는 플러팅…)</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EP 08 ===== -->
+  <section class="episode">
+    <div class="ep-head"><span class="ep-num">08</span><span class="ep-title">아프지 마</span></div>
     <div class="ep-rule"></div>
     <div class="narr reveal">어느 날, 지애가 다쳤다.</div>
-
     <div class="panel soft reveal">
       <span class="scene-label">6/7 · 아침</span>
-      <div class="stage">
-        <svg class="av"><use href="#jiae"/></svg>
-        <svg class="av"><use href="#oppa"/></svg>
-      </div>
+      <div class="stage"><svg class="av"><use href="#jiae"/></svg><svg class="av"><use href="#oppa"/></svg></div>
       <div class="bubbles">
         <div class="bubble j"><span class="who">지애🌸</span>오빠아아아 인나따오오오</div>
         <div class="bubble o"><span class="who">오빠</span>이쁜 지애 안녕 ^^ 아픈 덴 좀 어때? 더 붓진 않았어?</div>
         <div class="bubble o"><span class="who">오빠</span>메디폼은 2~3일에 한 번만, 통풍되는 게 오히려 좋대</div>
       </div>
     </div>
-
     <div class="panel soft reveal">
       <div class="bubbles">
         <div class="bubble j"><span class="who">지애🌸</span>흉질까바 속상해 ㅠㅠ</div>
         <div class="bubble o"><span class="who">오빠</span>이쁜 것보다 안 아픈 게 먼저야. 우선 다 낫고 생각해 ^^</div>
       </div>
     </div>
-
     <div class="narr em reveal">그 사이, 호칭은 어느새<br>‘님’에서 반말이 되어 있었다.</div>
+  </section>
+
+  <!-- ===== EP 09 (NEW) ===== -->
+  <section class="episode">
+    <div class="ep-head"><span class="ep-num">09</span><span class="ep-title">샤도네이 한 병</span></div>
+    <div class="ep-rule"></div>
+    <div class="narr reveal">와인 박람회에 간 오빠는,<br>제일 먼저 지애를 떠올렸다.</div>
+    <div class="panel wine reveal">
+      <span class="scene-label">6/19 · 코엑스</span>
+      <div class="stage"><svg class="av"><use href="#oppa"/></svg><svg class="av"><use href="#jiae"/></svg></div>
+      <div class="bubbles">
+        <div class="bubble o"><span class="who">오빠</span>내 사랑 지애는 어떤 화이트 와인 좋아해?</div>
+        <div class="bubble j"><span class="who">지애🌸</span>나 샤도네이 화이트와인 됴아해! ㅎㅎ</div>
+        <div class="bubble o"><span class="who">오빠</span>오키오키, 보이면 사올게 ^^</div>
+      </div>
+    </div>
+    <div class="panel wine reveal">
+      <div class="bubbles">
+        <div class="bubble o"><span class="who">오빠</span>산미 있는 화이트가 어울릴 것 같아서 골랐어. 네 생각하면서 산 와인이니까</div>
+        <div class="bubble j"><span class="who">지애🌸</span>오빠 와인 맛잇어 보인다 ^^</div>
+      </div>
+    </div>
+    <div class="narr reveal">작은 것 하나에도, 늘 지애가 있었다.</div>
   </section>
 
   <!-- ===== EPILOGUE ===== -->
@@ -492,10 +446,7 @@
     <h2>봄에서 여름으로</h2>
     <p>매일 아침엔 “잘 잤어?”,<br>매일 밤엔 “잘 자”.</p>
     <p>사소한 안부가 쌓여 하루가 되고,<br>하루가 쌓여 한 계절이 됐다.</p>
-    <div class="duo">
-      <svg class="av"><use href="#oppa"/></svg>
-      <svg class="av"><use href="#jiae"/></svg>
-    </div>
+    <div class="duo"><svg class="av"><use href="#oppa"/></svg><svg class="av"><use href="#jiae"/></svg></div>
     <div class="quote">“어쩌면 나도<br>전생에 나라를 구했을까?”</div>
     <div class="sign">— 2026년 봄, 카카오톡에서 <span class="heart">🌸</span></div>
   </section>
